@@ -1,0 +1,29 @@
+package day_1.objectorientation;
+
+//Employee Ashok
+class Employee{
+	int id;
+	String name;
+	double salary;
+	
+	public void increment(double increment){
+		salary+=increment;
+	}
+	public void printEmployee(){
+		System.out.println("emp state is : "+ id +" name "+ salary);
+	}
+}
+
+public class B_DataHiding {
+	
+	//Me
+	public static void main(String[] args) {
+		Employee employee=new Employee();
+		employee.id=123;
+		employee.name="raja";
+		employee.salary=567888;
+		
+		employee.printEmployee();
+	}
+
+}

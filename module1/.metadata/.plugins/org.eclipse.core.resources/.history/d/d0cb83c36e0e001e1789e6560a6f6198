@@ -1,0 +1,28 @@
+package day_1.objectorientation;
+//Design patterns? Singleton : only object of a class , useful
+
+//static data /static method --> in order to call static method 
+//we dont have to create the object of that class
+
+class MyClass{
+	private static MyClass class1Obj=new MyClass();
+	
+	public static MyClass getMyClassObject(){
+		return class1Obj;
+	}
+	private MyClass(){
+		System.out.println("dare to call me");
+	}
+	public void doWork(){
+		System.out.println("dowork");
+	}
+}
+public class D_PrivateCtr {
+	
+	public static void main(String[] args) {
+		MyClass class1=MyClass.getMyClassObject();
+		class1.doWork();
+		
+	}
+
+}

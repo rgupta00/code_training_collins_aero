@@ -1,0 +1,36 @@
+package day_1.objectorientation;
+//Passanger named raj is moving from BTM to Marathali using metro
+
+class Metro{
+	public void move(String s, String d){
+		System.out.println("moving in a metro from "+ s +" to "+ d);
+	}
+}
+class Passanger{
+	private String name;
+	
+	public Passanger(String pName){
+		name=pName;
+	}
+	
+	public void travel(String s, String d,Metro metro ){
+		System.out.println("passanger named : "+ name);
+		metro.move(s, d);
+	}
+}
+public class A_BasicOO {
+	
+	public static void main(String[] args) {
+		Metro metro=new Metro();
+		
+		Passanger passanger=new Passanger("raj");
+		passanger.travel("BTM", "Marathali", metro);
+		
+	}
+
+}
+
+
+
+
+
