@@ -1,0 +1,25 @@
+package day_1;
+
+public class B_DateProblem {
+
+	
+	public static void main(String[] args) {
+		//i want to find out next date 31st Dec 2022
+		
+		//first to take values form the user
+		int d=31, m=12 , y=2000;
+		
+		//u need to check if it is a leap year Feb 29 days and keep the records of days in every month
+		
+		if(y%4==0 && y%100!=0 || y%400==0){
+			System.out.println("leap year");
+		}else{
+			System.out.println("not a leap year");
+		}
+		
+		
+		
+		//u need to write logic to find out next day
+		
+	}
+}
