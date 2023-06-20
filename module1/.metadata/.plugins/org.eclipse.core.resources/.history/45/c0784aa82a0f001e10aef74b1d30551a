@@ -1,0 +1,23 @@
+package a.c;
+import a.b.A;
+
+public class B {
+
+	public static void main(String[] args) {
+		A a1=new A();
+		System.out.println(a1.i);//private
+		
+		
+		System.out.println(a1.m);//default
+		System.out.println(a1.j);//protected
+		
+		
+		
+		System.out.println(a1.k);//public : YES
+		
+		a1.fooPublic();//only public method is access directly
+		
+		
+		
+	}
+}

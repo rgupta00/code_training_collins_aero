@@ -1,0 +1,25 @@
+package com.day2.ex0;
+class Employee{
+	private int id;
+	private String name;
+	private double salary;
+	
+	public Employee(){
+		System.out.println("it is a default ctr");
+	}
+	
+	
+}
+public class A_BasicsOfJavaClass {
+	
+	//java oo basics: class , object , ctr: default parameteriszed, copy ctr
+	//gettter setters
+	//business logic methods
+	//this keyword
+	public static void main(String[] args) {
+		
+		Employee e1=new Employee();
+		
+	}
+
+}

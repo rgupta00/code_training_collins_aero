@@ -1,0 +1,53 @@
+package com.day2.ex0;
+class Employee{
+	private int id;
+	private String name;
+	private double salary;
+	
+	//default ctr
+	public Employee(){
+		//u can call one ctr from another ctr
+		this(1,"foo",90000);
+	}
+	//para ... ctr
+	//what is the job of ctr? used to init initial values to instance variable
+	public Employee(int id, String name, double salary){
+		this.id=id;
+		this.name=name;
+		this.salary=salary;
+	}
+	
+	//copy ctr: used to create the object with the help of state of another object
+	public Employee(Employee e){
+		this.id=e.id;
+		this.name=e.name;
+		this.salary=e.salary;
+	}
+	
+	
+	public void printEmployee(){
+		System.out.println("id : "+ id );
+		System.out.println("name : "+ name );
+		System.out.println("salary : "+ salary );
+	}
+}
+public class A_BasicsOfJavaClass {
+	
+	//java oo basics: class , object , ctr: default parameteriszed, copy ctr
+	//gettter setters
+	//business logic methods
+	//this keyword
+	public static void main(String[] args) {
+		
+		Employee e1=new Employee(2,"raj",67000);
+		e1.printEmployee();
+		
+		Employee e2=new Employee(e1);
+		e2.printEmployee();
+		
+		Employee e3=new Employee();
+		e2.printEmployee();
+		
+	}
+
+}

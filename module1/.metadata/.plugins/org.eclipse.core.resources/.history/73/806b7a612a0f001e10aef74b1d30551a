@@ -1,0 +1,20 @@
+package a.b;
+
+public class A {
+	private int i=1;
+	protected int j=2;
+	public int k=3;
+	
+	private void fooPrivate(){
+		System.out.println("foo private method ");
+	}
+	
+	private void fooProtected(){
+		System.out.println("foo protected method ");
+	}
+	
+	private void fooPublic(){
+		System.out.println("foo public method ");
+	}
+	
+}

@@ -1,0 +1,5 @@
+package com.collins.aif.facerecsystem.db;
+
+public class Face {
+
+}

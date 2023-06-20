@@ -1,0 +1,36 @@
+package com.day2.ex0;
+class Employee{
+	private int id;
+	private String name;
+	private double salary;
+	
+	public Employee(){
+		System.out.println("it is a default ctr");
+	}
+	//what is the job of ctr? used to init initial values to instance variable
+	public Employee(int myId, String myName, double mySalary){
+		id=myId;
+		name=myName;
+		salary=mySalary;
+	}
+	
+	public void printEmployee(){
+		System.out.println("id : "+ id );
+		System.out.println("name : "+ name );
+		System.out.println("salary : "+ salary );
+	}
+}
+public class A_BasicsOfJavaClass {
+	
+	//java oo basics: class , object , ctr: default parameteriszed, copy ctr
+	//gettter setters
+	//business logic methods
+	//this keyword
+	public static void main(String[] args) {
+		
+		Employee e1=new Employee(2,"raj",67000);
+		e1.printEmployee();
+		
+	}
+
+}

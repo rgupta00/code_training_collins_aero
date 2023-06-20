@@ -1,0 +1,19 @@
+package com.day2.ex1;
+
+
+public class CopyOfB_CallByValueEx3 {
+	
+	public static void main(String[] args) {
+		Value value=new Value(5);
+		//java says u cant swap 2 objects in java (trick: of array)
+		//but u can change the state of object in a method call?
+		System.out.println("value is : "+ value.getV());
+		changeIt(value);
+		System.out.println("value is : "+ value.getV());
+	}
+
+	private static void changeIt(Value x) {
+		x.setV(x.getV()*2);
+	}
+
+}
