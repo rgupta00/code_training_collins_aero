@@ -1,0 +1,25 @@
+package com.day2.ex3;
+
+//why overriding?
+class KrishnaDairy{
+	
+	public void sellMilk(){
+		System.out.println("selling normal milk");
+	}
+}
+class KrishnaDairyImproved extends KrishnaDairy{
+	
+	@Override
+	public void sellMilk(){
+		System.out.println("selling pasteurized  milk");
+	}
+}
+
+
+public class C_FuncationOverriding {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

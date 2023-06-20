@@ -1,0 +1,21 @@
+package com.day2.ex3;
+//What is function overloading : 4hr , 6hr 
+class Cal{
+	
+	public int add(int a, int b){
+		return a+b;
+	}
+	public int add(int a, int b,int c){
+		return a+b+c;
+	}
+}
+public class B_FunctionOverloading {
+	
+	public static void main(String[] args) {
+		//compile time 
+		Cal c=new Cal();
+		int value=c.add(2, 2,5);//as compiler know which method ur calling. ie ....
+		System.out.println(value);
+	}
+
+}

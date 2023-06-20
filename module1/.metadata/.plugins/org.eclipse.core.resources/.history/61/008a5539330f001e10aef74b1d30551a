@@ -1,0 +1,21 @@
+package com.day2.ex3;
+
+class A{
+	private int i;
+	public A(int i){
+		this.i=i;
+	}
+	
+	public void printMethod(){
+		System.out.println("value of i: "+ i);
+	}
+}
+
+
+public class A_Inheritance {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

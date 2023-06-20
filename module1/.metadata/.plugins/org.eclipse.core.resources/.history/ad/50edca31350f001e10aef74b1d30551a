@@ -1,0 +1,14 @@
+package com.day2.ex3;
+//What is function overloading : 4hr , 6hr 
+class Cal{
+	public int add(int a, int b){
+		return a+b;
+	}
+}
+public class B_FunctionOverloading {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

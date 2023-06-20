@@ -1,4 +1,6 @@
 
+
+
 Discussion day 2:
 ====================
 
@@ -397,3 +399,416 @@ public class CopyOfB_CallByValueEx3 {
 		//that is pointed by the pointer (ref)
 	}
 }
+
+=========================
+What is the need of java packages?
+
+used to orgainzed the code
+used to enforce better encapsulation
+
+
+Ex: of face rec system
+
+Ex: how it force better encapsulation?
+
+----------------------------------------
+
+Practice:
+1. create a package a.b
+
+then put the code
+--------------------
+public class A {
+	private int i=1;
+	int m=30;
+	protected int j=2;
+	public int k=3;
+	
+	private void fooPrivate(){
+		System.out.println("foo private method ");
+	}
+	
+	 void fooDefault(){
+		System.out.println("foo default method ");
+	}
+	
+	protected void fooProtected(){
+		System.out.println("foo protected method ");
+	}
+	
+	public void fooPublic(){
+		System.out.println("foo public method ");
+	}
+	
+}
+
+
+class A1{
+}
+
+
+---------
+step 2: create a another package a.c
+
+
+public class B extends A{
+
+	public static void main(String[] args) {
+		
+		//What is the diff bw default and protected?
+		//------------------------------------------------
+		//the protected data/method of a public class of another package is 
+		//is visible to my package iff we subclass that class
+		
+		//default data/method or class of other package CAN NOT be access in ANY WAY
+		
+		//Now u need to create the object of B rather then A
+		
+		B b=new B();
+		System.out.println(b.j);//protected data
+		System.out.println(b.k);//public data
+		
+		b.fooProtected();//protected
+		b.fooPublic();// yes we can anyway call public method
+		//A a1=new A();
+//		System.out.println(a1.i);//private
+//	
+//		System.out.println(a1.m);//default
+//		System.out.println(a1.j);//protected
+		
+		
+//		
+//		System.out.println(a1.k);//public : YES
+//		
+//		a1.fooPublic();//only public method is access directly
+//		
+		
+		
+	}
+}
+
+Step 3: now try to do expermentation of diff visiblity modifier
+---------------------------------------------------------------------------
+Break: 11-11:15 AM
+
+---------------------
+We start at 11:50AM
+-------------------------------------
+30min for trying all this stuff
+----------------------------------
+What next?
+------------
+relationship bw the objects
+	3 kind of relationship bw the objects
+	
+		has a
+		is a
+		use a
+IS-A
+--------------
+
+Employee
+
+FullTimeEmployee
+
+PartTimeEmployee
+
+
+Inheritance , type of Inheritance
+examples
+multiple Inheritance not supported in java(using inteface)
+
+function overloading
+function overriding
+
+run time polymporphism
+
+
+abstract class
+interface
+
+
+
+
+
+Simple inheritane examples:
+-------------------------
+
+	A
+	
+	|
+	B
+
+
+
+class A{
+	private int i;
+	
+	public A(int i){
+		this.i=i;
+	}
+	public void printMethod(){
+		System.out.println("value of i: "+ i);
+	}
+}
+class B extends A{
+	private int j;
+	
+	public B(int i, int j){
+		super(i);
+		this.j=j;
+	}
+	public void printMethod(){
+		super.printMethod();
+		System.out.println("value of j: "+ j);
+	}
+}
+
+public class A_Inheritance {
+	
+	public static void main(String[] args) {
+		
+		B b=new B(6,7);
+		b.printMethod();
+	}
+
+}
+
+
+Why mulitple Inheritance is not suppoted in java?
+===============================================
+
+	X     Y
+	  
+	  
+	  Z
+	  
+
+class X{
+	int i=5;
+	void foo(){
+		System.out.println("it is the foo method of class X");
+	}
+}
+
+class Y{
+	int i=50;
+	void foo(){
+		System.out.println("it is the foo method of class Y");
+	}
+}
+
+class Z extends X,Y{
+	void foo(){
+		super.foo();//Which method of base class , which base class i should choose?
+		System.out.println(i);//Which i?
+	}
+}
+
+public class A1_MutipleInh {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}
+------------------------------------------------
+
+
+What is function overloading?
+------------------------------
+class Cal{
+	
+	public double add(int a, double b){
+		System.out.println("public double add(int a, double b)");
+		return a+b;
+	}
+	
+	public double add(double a, int b){
+		System.out.println("public double add(double a, int b)");
+		return a+b;
+	}
+	
+	
+//	public int add(int a, int b,int c){
+//		return a+b+c;
+//	}
+}
+public class B_FunctionOverloading {
+	
+	public static void main(String[] args) {
+		
+		Cal c=new Cal();
+		double value=c.add(2, 2.8);//as compiler know which method ur calling. ie ....
+		System.out.println(value);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//compile time 
+		//Cal c=new Cal();
+		//int value=c.add(2, 2,5);//as compiler know which method ur calling. ie ....
+		//System.out.println(value);
+		
+		
+		
+	}
+
+}
+
+
+
+What is function overriding?
+------------------------------
+you can do run time polymorphism
+iff u have function overriding
+--------------------------------
+
+//why overriding?
+class KrishnaDairy{
+	
+	public void sellMilk(){
+		System.out.println("selling normal milk");
+	}
+}
+class KrishnaDairyImproved extends KrishnaDairy{
+	
+	@Override
+	public void sellMilk(){
+		System.out.println("selling pasteurized  milk");
+	}
+}
+
+public class C_FuncationOverriding {
+	
+	public static void main(String[] args) {
+		//overrding support run time polymorphism
+		KrishnaDairy dairy=new KrishnaDairyImproved();
+		dairy.sellMilk();//Compiler is clue less which method is going to be called
+		//ie why it called run time poly... it is decided at run time which method is 
+		//going to be called
+	}
+}
+-----------------------------------
+covarient return type:
+--------------------------------
+
+class NormalMilk{}
+
+class PasteurizedMilk extends NormalMilk{}
+
+class KrishnaDairy{
+	//till java 1.4 it is need to have exactly same sign of method so that they can be overriden
+	//java 1.5 : u can return a covarient return type
+	
+	public NormalMilk sellMilk(){
+		System.out.println("selling normal milk");
+		return new NormalMilk();
+	}
+}
+class KrishnaDairyImproved extends KrishnaDairy{
+	
+	@Override
+	public PasteurizedMilk sellMilk(){
+		System.out.println("selling pasteurized  milk");
+		return new PasteurizedMilk();
+	}
+}
+
+
+public class C_FuncationOverriding {
+	
+	public static void main(String[] args) {
+		//overrding support run time polymorphism
+		KrishnaDairy dairy=new KrishnaDairyImproved();
+		dairy.sellMilk();//Compiler is clue less which method is going to be called
+		//ie why it called run time poly... it is decided at run time which method is 
+		//going to be called
+	}
+
+}
+-----------------------------------------------
+
+how it provide code flexiblity?
+---------------------------------------
+
+
+//req: new to java pls listen my playlist
+
+abstract class Shape{
+	private String color;
+	
+	public Shape(String color) {
+		this.color = color;
+	}
+	public abstract void getArea();
+	
+	public void printColor(){
+		System.out.println("color : "+ color);
+	}
+}
+class Triangle extends Shape{
+	public Triangle(String color) {
+		super(color);
+	}
+	@Override
+	public void getArea() {
+		System.out.println("area of tri: 0.5 X b X h");
+	}
+	
+}
+class Circle extends Shape{
+	public Circle(String color) {
+		super(color);
+	}
+	@Override
+	public void getArea() {
+		System.out.println("area of Circle: PI X r X r");
+	}
+}
+
+class Square extends Shape{
+	public Square(String color) {
+		super(color);
+	}
+	@Override
+	public void getArea() {
+		System.out.println("area of Square: L X W");
+	}
+}
+
+
+
+public class D_CodeFlexiblity {
+	
+	public static void main(String[] args) {
+		//i can take choice for the user
+		//1. circle
+		//2. sq
+		//3. triangle
+		
+		Shape shape=null;
+		
+		Scanner scanner=new Scanner(System.in);
+		System.out.println("PE ur choice...1. Cir 2. Sq 3. Tri.");
+		int choice= scanner.nextInt();
+		if(choice==1)
+			shape=new Circle("red");
+		else if(choice==2)
+			shape=new Square("red");
+		else 
+			shape=new Triangle("red");
+		
+		shape.getArea();//Which method is going to be called is decided at run time
+		//ie why it is called run time polymorophism
+		
+	}
+
+}
+------------------------------------------------

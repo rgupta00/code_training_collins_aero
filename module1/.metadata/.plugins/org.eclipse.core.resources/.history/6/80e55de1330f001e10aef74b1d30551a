@@ -11,6 +11,7 @@ class A{
 	}
 }
 class B extends A{
+	
 	private int j;
 	
 	public B(int i, int j){

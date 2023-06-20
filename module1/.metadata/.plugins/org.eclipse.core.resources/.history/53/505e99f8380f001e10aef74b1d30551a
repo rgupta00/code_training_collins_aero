@@ -1,0 +1,13 @@
+package com.day2.ex3;
+class Shape{
+	public void getArea(){
+		System.out.println("i dont know");
+	}
+}
+public class D_CodeFlexiblity {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}
