@@ -2,6 +2,35 @@
 Discussion day 3:
 ====================
 
+
+-----------------------------
+
+
+
+
+
+
+* Quick recap of day 2
+* Java interface , abstract class
+* when to use interface and when to use abstract class
+* interface break the hierarchy
+
+* String class in java
+*String vs StringBuilder vs StringBuffer
+*string is special class, string pool, performance
+
+* immutablity
+* how to create immutable class (object)?
+
+* inner classes: introduction
+* annonymous inner class vs lambda
+
+* java 5 features
+
+
+Some MCQ:
+-----------
+
 class A{
 	void A(){
 		Sytem.out.println("hello");
@@ -96,29 +125,6 @@ public class Demo {
 
 
 
------------------------------
-
-
-
-
-
-
-* Quick recap of day 2
-* Java interface , abstract class
-* when to use interface and when to use abstract class
-* interface break the hierarchy
-
-* String class in java
-*String vs StringBuilder vs StringBuffer
-*string is special class, string pool, performance
-
-* immutablity
-* how to create immutable class (object)?
-
-* inner classes: introduction
-* annonymous inner class vs lambda
-
-* java 5 features
 
 
 
@@ -302,4 +308,455 @@ public class C_WhenToGoForInterfaceVsAbstractClass {
 		
 	}
 
+}
+
+Assignment : salary procesing system:
+--------------------------------------
+
+abstract public class Employee {
+	private int id;
+	private String name;
+	private double salary;
+	
+	
+	public abstract double getPay();
+	
+	public Employee(int id, String name, double salary) {
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+	}
+	
+	public void printEmployee(){
+		System.out.println("id : "+ id);
+		System.out.println("name: "+ name);
+		System.out.println("salary: "+ salary);
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	
+	
+}
+
+
+
+public class FullTimeEmployee extends Employee{
+
+	private String ppf;
+	
+	public  FullTimeEmployee(int id, String name, double salary, String ppf) {
+		super(id, name, salary);
+		this.ppf=ppf;
+	}
+	
+	@Override
+	public double getPay() {
+		return getSalary()*0.7;
+	}
+
+	public void printEmployee(){
+		super.printEmployee();
+		System.out.println("ppf : "+ ppf);
+	}
+	
+}
+
+
+
+
+
+
+
+public class PartTimeEmployee extends Employee{
+
+	private int noOfDays;
+	private int noOfHr;
+	private int ratePerHr;
+	
+	public  PartTimeEmployee(int id, String name, double salary, int noOfDays, int noOfHr ,
+			int ratePerHr) {
+		super(id, name, salary);
+		this.noOfDays=noOfDays;
+		this.noOfHr=noOfHr;
+		this.ratePerHr=ratePerHr;
+	}
+	
+	@Override
+	public double getPay() {
+		//1000+20*5*2000
+		return (getSalary()+noOfDays*noOfHr*ratePerHr) *.8;
+	}
+
+	public void printEmployee(){
+		super.printEmployee();
+		System.out.println("noOfDays : "+ noOfDays);
+		System.out.println("noOfHr : "+ noOfHr);
+		System.out.println("ratePerHr : "+ ratePerHr);
+		
+	}
+	
+}
+
+
+
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		Employee e=new PartTimeEmployee(1, "rajat", 1200, 12,5,2500);
+		e.printEmployee();
+		System.out.println(e.getPay());
+		
+//		Employee e=new FullTimeEmployee(1, "rajat", 120000, "ASJLKJLJ");
+//		e.printEmployee();
+//		System.out.println(e.getPay());
+	}
+
+}
+
+
+We have to implements payment procesing system:
+
+public class PaymentProcessor {
+	
+	public static void paymentProcessing(Employee employee){
+		double payment= employee.getPay();
+		//some jdbc ( data connectivity) to put data to database
+		System.out.println("---------------------------");
+		System.out.println("payment is being process "+ payment);
+		System.out.println("---------------------------");
+		
+	}
+
+}
+
+
+
+but problem :(
+
+it is tigtly coupled with employeee
+i do have new req to process the payment of consultants?
+
+
+
+inteface can help you:
+------------------------
+
+
+
+String :
+* very imp and used class in java
+* it is final class
+class MyClass extends String{
+}
+
+	ERROR
+	
+* String objects are immutable ie they can not be changes once they are created
+* bad code 
+String data="a"+"b"+"c"+"d";
+why?
+as lots of unnessary objects are created in the string pool
+	performance problem
+	performance tuning is a subject
+	
+	
+Q:
+---
+What is the ans to the Questions?
+----------------------------
+    
+    	String name1=new String("raj");
+    	
+    	String name2="raj";
+    	
+    	System.out.println(name1==name2);// compare the address
+    	
+		
+	=> false
+	
+	
+What is the ans to the Questions?
+----------------------------
+    	String name1="raj";
+    	
+    	String name2="raj";
+    	
+    	System.out.println(name1==name2);// compare the address
+
+	=> true
+	
+	
+	
+	
+String 	vs StringBuilder vs StringBuffer: imp
+=================================================
+	
+	
+    	//String 	vs StringBuilder vs StringBuffer: imp
+    	//Immutable	---mutable
+    	//StringBuilder : is not thread safe , very good in performance , no locking is used 
+    	//java 1.5
+    	
+    	//vs 
+    	//StringBuffer: is thread safe , but poor in performance
+    	
+    	
+//    	
+//    	StringBuilder sb=
+//    			new StringBuilder().append("a").append("b").append("c");
+    	
+
+
+Some common methods of string class:
+--------------------------------------
+Assignment: https://www.javatpoint.com/java-string
+-----------------------------------------------
+
+
+String data="java".toLowerCase();
+    	String data2="Java".toLowerCase();
+    	if(data.equals(data2)){
+    		System.out.println("are eq");
+    	}else{
+    		System.out.println("not eq");
+    	}
+    	
+    	
+    	
+    	
+//    	String data="i love java";
+//    	data =data.toUpperCase();
+//    	data=data.toLowerCase();
+//    	
+//    	//how to make tokens of the string 
+//    	
+//    	String tokens[]=data.split(" ");
+//    	for(String token: tokens){
+//    		System.out.println(token);
+//    	}
+//    	
+    	
+//    	StringTokenizer st=new StringTokenizer(data);
+//    	System.out.println(st.countTokens());
+//    	while(st.hasMoreTokens()){
+//    		String token= st.nextToken(" ");
+//    		System.out.println(token);
+//    	}
+    	
+        System.out.println("some common string method");
+		
+
+Immutability *
+-----------------
+once a object is create then we can not change the state of a object
+such kind of object are are called immutable object
+
+
+* Immutable object are thread safe *
+
+----------------------------------------------------------
+
+
+Java 5 features
+---------------
+* autoboxing and unboxing
+* covarient return type
+* variable argument methods
+* static import
+* enum
+
+
+* annotations
+* generics
+
+
+
+
+Java 8---> ------------------------------------> Java 21
+
+
+
+AutoBoxingAndUnboxing
+=============================
+public class A_AutoBoxingAndUnboxing {
+    public static void main(String[] args) {
+        /*
+            some imp java 5 features
+            * boxing unboxing
+            * enhance for loop
+            * varargs
+            *static import
+            * enum
+            * generics
+            * annotations
+
+         */
+    	System.out.println("=====auto boxing unboxing==========");
+    	
+    	//Wrapper classes?
+    	int i=12;// it is object or primitive?
+    	
+    	Integer it=new Integer(i);
+    
+    	//object are more powerful...java collection ds in java dont support primitive
+    	
+    	//before java 1.5 we have to manually wrap and un wrap the data :(
+    	
+    	//int temp=it.intValue();
+//    	temp++;
+//    	it=new Integer(temp);
+    	
+//    	int temp= it;
+//    	temp++;
+//    	it=temp;
+    	
+    	it++;
+    	
+    	
+    }
+}
+
+
+
+
+
+
+EnanceForLoop
+=====================
+
+public class B_EnanceForLoop {
+
+	
+	public static void main(String[] args) {
+		//enhance for loop
+		int arr[]={3,5,6,7};
+		//array and collection
+		for(int temp: arr){
+			System.out.println(temp);
+		}
+		
+	}
+}
+
+
+//varargs
+============
+class Cal{
+	public int add(int a, int b){
+		return a+b;
+	}
+	public int add(int a, int b,int c){
+		return a+b+c;
+	}
+	//how many methods i can define
+	public int add(int ...a){
+		int sum=0;
+		for(int temp: a){
+			sum+=temp;
+		}
+		return sum;
+	}
+}
+
+public class C_VariableArguments {
+	
+	public static void main(String[] args) {
+		Cal cal=new Cal();
+		int sum=cal.add(3,4,4,67);
+	}
+
+}
+
+
+
+static import
+===============
+
+import static java.lang.Math.*;
+//mathmatical app Math
+//static import
+public class D_StaticImport {
+	
+	public static void main(String[] args) {
+//		System.out.println(Math.PI);
+//		System.out.println(Math.cos(1));
+		
+		System.out.println(PI);
+		System.out.println(cos(1));
+	}
+
+}
+
+
+enum:
+===========
+*
+ * enum is a specical class that extends a class Enum
+ * used to define resturctive range of an object?
+ * 
+ */
+enum ShirtSize{
+	S,M,L,XL,XXL;
+}
+class Shirt{
+	private String name;
+	private String color;
+	private ShirtSize size;
+	public Shirt(String name, String color, ShirtSize size) {
+		super();
+		this.name = name;
+		this.color = color;
+		this.size = size;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Shirt [name=" + name + ", color=" + color + ", size=" + size
+				+ "]";
+	}
+
+}
+public class E_EnumBasics {
+	public static void main(String[] args) {
+		//Shirtsize: 38,40,42,44,46
+		Shirt shirt=new Shirt("pe", "blue", ShirtSize.XL);
+		System.out.println(shirt);
+	}
+
+}
+
+
+
+enum ShirtSize{
+	S,M,L,XL,XXL;
+}
+
+class ShirtSize extends Enum{
+	pviate final static ShirtSize S=new ShirtSize();
+	pviate final static ShirtSize M=new ShirtSize();
+	pviate final static ShirtSize L=new ShirtSize();
+	pviate final static ShirtSize XL=new ShirtSize();
+	pviate final static ShirtSize XXL=new ShirtSize();
 }

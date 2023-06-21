@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/day_3_adv/src/com/session5/java5_features/E_EnumBasics.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.session5.java5_features.E_EnumBasics"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="day_3_adv"/>
+</launchConfiguration>

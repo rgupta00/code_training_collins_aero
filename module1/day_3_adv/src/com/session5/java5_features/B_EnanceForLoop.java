@@ -1,0 +1,15 @@
+package com.session5.java5_features;
+
+public class B_EnanceForLoop {
+
+	
+	public static void main(String[] args) {
+		//enhance for loop
+		int arr[]={3,5,6,7};
+		//array and collection
+		for(int temp: arr){
+			System.out.println(temp);
+		}
+		
+	}
+}

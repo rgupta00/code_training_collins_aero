@@ -2,6 +2,35 @@
 Discussion day 3:
 ====================
 
+
+-----------------------------
+
+
+
+
+
+
+* Quick recap of day 2
+* Java interface , abstract class
+* when to use interface and when to use abstract class
+* interface break the hierarchy
+
+* String class in java
+*String vs StringBuilder vs StringBuffer
+*string is special class, string pool, performance
+
+* immutablity
+* how to create immutable class (object)?
+
+* inner classes: introduction
+* annonymous inner class vs lambda
+
+* java 5 features
+
+
+Some MCQ:
+-----------
+
 class A{
 	void A(){
 		Sytem.out.println("hello");
@@ -96,29 +125,6 @@ public class Demo {
 
 
 
------------------------------
-
-
-
-
-
-
-* Quick recap of day 2
-* Java interface , abstract class
-* when to use interface and when to use abstract class
-* interface break the hierarchy
-
-* String class in java
-*String vs StringBuilder vs StringBuffer
-*string is special class, string pool, performance
-
-* immutablity
-* how to create immutable class (object)?
-
-* inner classes: introduction
-* annonymous inner class vs lambda
-
-* java 5 features
 
 
 
@@ -520,4 +526,235 @@ String 	vs StringBuilder vs StringBuffer: imp
 //    	StringBuilder sb=
 //    			new StringBuilder().append("a").append("b").append("c");
     	
+
+
+Some common methods of string class:
+--------------------------------------
+Assignment: https://www.javatpoint.com/java-string
+-----------------------------------------------
+
+
+String data="java".toLowerCase();
+    	String data2="Java".toLowerCase();
+    	if(data.equals(data2)){
+    		System.out.println("are eq");
+    	}else{
+    		System.out.println("not eq");
+    	}
     	
+    	
+    	
+    	
+//    	String data="i love java";
+//    	data =data.toUpperCase();
+//    	data=data.toLowerCase();
+//    	
+//    	//how to make tokens of the string 
+//    	
+//    	String tokens[]=data.split(" ");
+//    	for(String token: tokens){
+//    		System.out.println(token);
+//    	}
+//    	
+    	
+//    	StringTokenizer st=new StringTokenizer(data);
+//    	System.out.println(st.countTokens());
+//    	while(st.hasMoreTokens()){
+//    		String token= st.nextToken(" ");
+//    		System.out.println(token);
+//    	}
+    	
+        System.out.println("some common string method");
+		
+
+Immutability *
+-----------------
+once a object is create then we can not change the state of a object
+such kind of object are are called immutable object
+
+
+* Immutable object are thread safe *
+
+----------------------------------------------------------
+
+
+Java 5 features
+---------------
+* autoboxing and unboxing
+* covarient return type
+* variable argument methods
+* static import
+* enum
+
+
+* annotations
+* generics
+
+
+
+
+Java 8---> ------------------------------------> Java 21
+
+
+
+AutoBoxingAndUnboxing
+=============================
+public class A_AutoBoxingAndUnboxing {
+    public static void main(String[] args) {
+        /*
+            some imp java 5 features
+            * boxing unboxing
+            * enhance for loop
+            * varargs
+            *static import
+            * enum
+            * generics
+            * annotations
+
+         */
+    	System.out.println("=====auto boxing unboxing==========");
+    	
+    	//Wrapper classes?
+    	int i=12;// it is object or primitive?
+    	
+    	Integer it=new Integer(i);
+    
+    	//object are more powerful...java collection ds in java dont support primitive
+    	
+    	//before java 1.5 we have to manually wrap and un wrap the data :(
+    	
+    	//int temp=it.intValue();
+//    	temp++;
+//    	it=new Integer(temp);
+    	
+//    	int temp= it;
+//    	temp++;
+//    	it=temp;
+    	
+    	it++;
+    	
+    	
+    }
+}
+
+
+
+
+
+
+EnanceForLoop
+=====================
+
+public class B_EnanceForLoop {
+
+	
+	public static void main(String[] args) {
+		//enhance for loop
+		int arr[]={3,5,6,7};
+		//array and collection
+		for(int temp: arr){
+			System.out.println(temp);
+		}
+		
+	}
+}
+
+
+//varargs
+============
+class Cal{
+	public int add(int a, int b){
+		return a+b;
+	}
+	public int add(int a, int b,int c){
+		return a+b+c;
+	}
+	//how many methods i can define
+	public int add(int ...a){
+		int sum=0;
+		for(int temp: a){
+			sum+=temp;
+		}
+		return sum;
+	}
+}
+
+public class C_VariableArguments {
+	
+	public static void main(String[] args) {
+		Cal cal=new Cal();
+		int sum=cal.add(3,4,4,67);
+	}
+
+}
+
+
+
+static import
+===============
+
+import static java.lang.Math.*;
+//mathmatical app Math
+//static import
+public class D_StaticImport {
+	
+	public static void main(String[] args) {
+//		System.out.println(Math.PI);
+//		System.out.println(Math.cos(1));
+		
+		System.out.println(PI);
+		System.out.println(cos(1));
+	}
+
+}
+
+
+enum:
+===========
+*
+ * enum is a specical class that extends a class Enum
+ * used to define resturctive range of an object?
+ * 
+ */
+enum ShirtSize{
+	S,M,L,XL,XXL;
+}
+class Shirt{
+	private String name;
+	private String color;
+	private ShirtSize size;
+	public Shirt(String name, String color, ShirtSize size) {
+		super();
+		this.name = name;
+		this.color = color;
+		this.size = size;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Shirt [name=" + name + ", color=" + color + ", size=" + size
+				+ "]";
+	}
+
+}
+public class E_EnumBasics {
+	public static void main(String[] args) {
+		//Shirtsize: 38,40,42,44,46
+		Shirt shirt=new Shirt("pe", "blue", ShirtSize.XL);
+		System.out.println(shirt);
+	}
+
+}
+
+enum ShirtSize{
+	S,M,L,XL,XXL;
+}
+
+class ShirtSize extends Enum{
+	pviate final static ShirtSize S=new ShirtSize();
+	pviate final static ShirtSize M=new ShirtSize();
+	pviate final static ShirtSize L=new ShirtSize();
+	pviate final static ShirtSize XL=new ShirtSize();
+	pviate final static ShirtSize XXL=new ShirtSize();
+}

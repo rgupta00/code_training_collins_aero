@@ -1,0 +1,43 @@
+package com.session5.java5_features;
+
+public class Demo1 {
+    public static void main(String[] args) {
+        /*
+            some imp java 5 features
+            * boxing unboxing
+            * enhance for loop
+            * varargs
+            *static import
+            * enum
+            * generics
+            * annotations
+
+         */
+    	System.out.println("=====auto boxing unboxing==========");
+    	
+    	//Wrapper classes?
+    	int i=12;// it is object or primitive?
+    	
+    	Integer it=new Integer(i);
+    	System.out.println(it.intValue());
+    	//object are more powerful...java collection ds in java dont support primitive
+    	
+    	
+    	
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

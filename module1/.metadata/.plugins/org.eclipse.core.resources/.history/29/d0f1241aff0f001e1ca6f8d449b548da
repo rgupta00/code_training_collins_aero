@@ -1,0 +1,33 @@
+package com.session5.java5_features;
+/*
+ * enum is a specical class that extends a class Enum
+ * used to define resturctive range of an object?
+ * 
+ */
+class Shirt{
+	private String name;
+	private String color;
+	private int size;
+	public Shirt(String name, String color, int size) {
+		super();
+		this.name = name;
+		this.color = color;
+		this.size = size;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Shirt [name=" + name + ", color=" + color + ", size=" + size
+				+ "]";
+	}
+	
+	
+}
+public class E_EnumBasics {
+	public static void main(String[] args) {
+		Shirt shirt=new Shirt("pe", "blue", 2);
+		System.out.println(shirt);
+	}
+
+}
