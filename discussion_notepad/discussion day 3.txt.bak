@@ -1,0 +1,305 @@
+
+Discussion day 3:
+====================
+
+class A{
+	void A(){
+		Sytem.out.println("hello");
+	}
+	public void doWork(){
+	Sytem.out.println("doing work");
+	}
+}
+
+class Demo{
+	public static void main(String args[]){
+			A a=new A();
+			a.doWork();
+			
+	}
+
+}
+
+
+
+
+class A {
+
+	A(int a) {
+		System.out.println("hello ctr A");
+	}
+}
+
+class B extends A {
+	B() {
+		System.out.println("hello ctr B");
+	}
+}
+
+public class Demo {
+	public static void main(String args[]) {
+		B b = new B();
+
+	}
+
+}
+
+
+class A {
+
+	A(int a) {
+		System.out.println("hello ctr A "+ a);
+	}
+}
+
+class B extends A {
+	B(int a, int b) {
+		super(a);
+		System.out.println("hello ctr B "+b);
+	}
+}
+
+public class Demo {
+	public static void main(String args[]) {
+		
+		B b = new B(3,5);
+
+	}
+
+}
+
+
+
+
+class A {
+  static public void doWork(){
+	System.out.println("doing work 1");
+	}
+	
+}
+
+class B extends A {
+	static public void doWork(){
+		System.out.println("doing work 2");
+	}
+}
+
+public class Demo {
+	public static void main(String args[]) {
+		
+		A a=new B();
+		a.doWork();
+
+	}
+}
+
+
+
+
+-----------------------------
+
+
+
+
+
+
+* Quick recap of day 2
+* Java interface , abstract class
+* when to use interface and when to use abstract class
+* interface break the hierarchy
+
+* String class in java
+*String vs StringBuilder vs StringBuffer
+*string is special class, string pool, performance
+
+* immutablity
+* how to create immutable class (object)?
+
+* inner classes: introduction
+* annonymous inner class vs lambda
+
+* java 5 features
+
+
+
+Quick recap on abstract class:
+------------------------------------
+
+/*
+ * features of ab class
+ * it can have instane varaible, static/method . ctr....
+ * only limiation is that u can not create object of it
+ * 
+ * and if a class have ab method then it must be declare abstract
+ * 
+ */
+
+
+
+What is interface ?
+--------------------------------
+
+act as a contract bw 2 parties , it is 100% abstraction in java
+
+in order to achive abstraction you have 2 techeniques:
+1. java interface
+2. abstract class
+
+basic synte, why to use it
+
+java 8 there are some changes in the inteface...
+
+	
+	
+	
+	
+Ex interface:
+---------------
+//java 7 : it is 100% abstraction in java
+//i can not define an instance variable inside interface,
+//u  can only define static and final data only class vairable is alled
+
+interface Foo{
+	 int i=5;//public static final
+	 void foo();// it is by default public abstract
+}
+//u want to create a class
+class MyFooImpl implements Foo{
+
+	@Override
+	public void foo() {
+		System.out.println(Foo.i);
+		System.out.println("foo method is overriden by MyFooImpl class");
+	}
+	
+}
+public class A_InterfaceBasics {
+	
+	public static void main(String[] args) {
+		Foo f=new MyFooImpl();
+		f.foo();
+	}
+
+}
+
+
+
+//a class can imp more then 1 interface (it is not possible class)
+===================================================================
+
+interface Foo{
+	 int i=5;//public static final
+	 void foo();// it is by default public abstract
+}
+
+interface Bar{
+	 int j=5;//public static final
+	 void foo2();// it is by default public abstract
+}
+
+//u want to create a class
+class MyFooImpl implements Foo,Bar{
+
+	@Override
+	public void foo() {
+		System.out.println(Foo.i);
+		System.out.println("foo method is overriden by MyFooImpl class");
+	}
+
+	@Override
+	public void foo2() {
+		System.out.println(Bar.j);
+		System.out.println("foo2() method is overriden by MyFooImpl class");
+	}
+	
+}
+public class A_InterfaceBasics {
+	
+	public static void main(String[] args) {
+		Foo f=new MyFooImpl();
+		f.foo();
+	}
+
+}
+
+
+
+Note: some improvement in java 8 regarding interfaces:
+================================================
+
+	1. //now u an have default imp of the method , why
+	2. //now u can also add static method inside the interface
+
+//now some imp is done inside interface concept
+interface Z{
+	int i=0;
+	public void fooZ();
+	
+	//now u an have default imp of the method , why
+	default public void fooDefault(){
+		System.out.println("fooDefault method inside Z interface");
+	}
+	//now u can also add static method inside the interface
+	public static void fooStatic(){
+		System.out.println("fooStatic");
+	}
+}
+class ZImpl implements Z{
+
+	@Override
+	public void fooZ() {
+		System.out.println("fooZ method is overriden");
+	}
+	
+}
+public class A1_InterfaceImpInJava8 {
+	
+	public static void main(String[] args) {
+		Z z=new ZImpl();
+		z.fooZ();
+		Z.fooStatic();
+	}
+
+}
+
+
+
+When to go for interface and when to go for abs class:
+--------------------------------------------------------
+
+interface Jumpable{
+	public void jump();
+}
+class Monkey implements Jumpable{
+	public void stayOnTree(){
+		System.out.println("stayOnTree...");
+	}
+	
+	public void jump(){
+		System.out.println("monkey jump like anything...");
+	}
+}
+//Kid is not monkey but he can jump like monkey
+class Kid implements Jumpable{
+	
+	public void goSchool(){
+		System.out.println("doing to school");
+	}
+	
+	public void study(){
+		System.out.println("study");
+	}
+	
+	public void jump(){
+		System.out.println("kid jump better then anything...");
+	}
+}
+
+public class C_WhenToGoForInterfaceVsAbstractClass {
+	
+	public static void main(String[] args) {
+		Kid k=new Kid();
+		
+	}
+
+}

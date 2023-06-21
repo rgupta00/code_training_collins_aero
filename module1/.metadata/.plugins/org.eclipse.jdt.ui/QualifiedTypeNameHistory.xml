@@ -8,5 +8,20 @@
 <fullyQualifiedTypeName name="day_1.objectorientation.Employee"/>
 <fullyQualifiedTypeName name="day_1.objectorientation.Foo"/>
 <fullyQualifiedTypeName name="day_1.objectorientation.MyClass"/>
+<fullyQualifiedTypeName name="com.day2.ex0.Employee"/>
+<fullyQualifiedTypeName name="com.day2.ex0.Foo"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="com.day2.ex1.Value"/>
+<fullyQualifiedTypeName name="com.collins.aif.facerecsystem.ui.Face"/>
+<fullyQualifiedTypeName name="com.collins.aif.facerecsystem.db.Face"/>
+<fullyQualifiedTypeName name="a.b.A"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="com.day2.ex3.KrishnaDairy"/>
+<fullyQualifiedTypeName name="com.day2.ex3.KrishnaDairyImproved"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.day2.ex3.Shape"/>
+<fullyQualifiedTypeName name="com.day2.ex3.Circle"/>
+<fullyQualifiedTypeName name="com.day2.ex3.Square"/>
+<fullyQualifiedTypeName name="com.day2.ex3.Triangle"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,21 @@
+package com.mcq.q2;
+
+class A {
+	A() {
+		System.out.println("hello ctr A");
+	}
+}
+
+class B extends A {
+	B() {
+		System.out.println("hello ctr B");
+	}
+}
+
+public class Demo {
+	public static void main(String args[]) {
+		B b = new B();
+
+	}
+
+}

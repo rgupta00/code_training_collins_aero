@@ -1,0 +1,12 @@
+package com.salaryprocesingsystem;
+
+public class PaymentProcessor {
+	
+	public double paymentProcessing(Employee employee){
+		double payment= employee.getPay();
+		//some jdbc ( data connectivity) to put data to database
+		System.out.println("payment is being process");
+		return payment;
+	}
+
+}

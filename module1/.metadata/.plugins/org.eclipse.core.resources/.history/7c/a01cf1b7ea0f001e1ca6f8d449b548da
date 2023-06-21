@@ -1,0 +1,30 @@
+package com.day2.ex5;
+class Monkey{
+	public void stayOnTree(){
+		System.out.println("stayOnTree...");
+	}
+	
+	public void jump(){
+		System.out.println("monkey jump like anything...");
+	}
+}
+
+class Kid extends Monkey{
+	
+	public void goSchool(){
+		System.out.println("doing to school");
+	}
+	
+	public void study(){
+		System.out.println("study study...");
+	}
+}
+
+public class C_WhenToGoForInterfaceVsAbstractClass {
+	
+	public static void main(String[] args) {
+		Kid k=new Kid();
+		k.stayOnTree();
+	}
+
+}

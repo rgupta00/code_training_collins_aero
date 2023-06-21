@@ -1,0 +1,20 @@
+package com.mcq.q1;
+
+class A {
+	void A() {
+		System.out.println("hello");
+	}
+
+	public void doWork() {
+		System.out.println("doing work");
+	}
+}
+
+class Demo1 {
+	public static void main(String args[]) {
+		A a = new A();
+		a.doWork();
+
+	}
+
+}

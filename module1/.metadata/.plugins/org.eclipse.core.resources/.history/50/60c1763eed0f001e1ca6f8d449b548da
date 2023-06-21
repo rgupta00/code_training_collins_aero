@@ -1,0 +1,22 @@
+package com.salaryprocesingsystem;
+
+public class PartTimeEmployee extends Employee{
+
+	private String ppf;
+	
+	public  PartTimeEmployee(int id, String name, double salary, String ppf) {
+		super(id, name, salary);
+		this.ppf=ppf;
+	}
+	
+	@Override
+	public double getPay() {
+		return getSalary()*0.7;
+	}
+
+	public void printEmployee(){
+		super.printEmployee();
+		System.out.println("ppf : "+ ppf);
+	}
+	
+}

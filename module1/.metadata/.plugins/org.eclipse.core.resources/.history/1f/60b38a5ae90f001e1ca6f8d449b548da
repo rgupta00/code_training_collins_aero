@@ -1,0 +1,9 @@
+package com.day2.ex5;
+
+public class A1_InterfaceImpInJava8 {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}
