@@ -1,0 +1,27 @@
+package com.day4.ex_handling;
+
+public class G_FinallyBlock {
+	public static void main(String[] args) {
+		// Why we need
+
+		// good programming practice about finallly block
+		/*
+		 * 1. never return values form finally block 
+		 * 2. never throw ex from finally block
+		 */
+		
+	int value =foo();
+	System.out.println(value);
+	
+
+	}
+
+	private static int foo() {
+		try{
+			return 10;
+		}finally{
+			return 11;
+		}
+	}
+
+}

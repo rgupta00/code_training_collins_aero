@@ -1,0 +1,53 @@
+package com.day4.ex_handling;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+class AEx extends Exception{}
+class BEx extends Exception{}
+class B1Ex extends BEx{}
+
+//excpetion handing and overring
+/*
+ * Rule : overriden method can not throw broder excpetion then base method
+ */
+class A1{
+	void foof()throws IOException{
+		System.out.println("foof method of class A");
+	}
+}
+
+class B1 extends A1{
+	@Override
+	void foof()throws FileNotFoundException{
+		System.out.println("foof method of class B");
+	}
+}
+
+public class E_ExHandingAndOverriding {
+    public static void main(String[] args) {
+
+    	A1 a=new B1();
+    	a.foof();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

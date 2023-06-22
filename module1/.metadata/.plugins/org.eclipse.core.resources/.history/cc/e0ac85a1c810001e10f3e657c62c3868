@@ -1,0 +1,25 @@
+package com.day4.ex_handling;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class H_AutomaticResourceMgt {
+    public static void main(String[] args) {
+    	
+    	Scanner scanner=new Scanner(System.in);
+    	System.out.println("PE ur name");
+    	String name= scanner.nextLine();
+    	System.out.println(name);
+    	
+    	
+    	
+    	//Automatic resouce managemnt java 7
+    	//========================================
+        //kab lagaga? ARM can be applied to a class iff it 
+    	//extends a class ie called AutoClosbable
+
+
+
+    }
+}

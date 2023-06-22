@@ -3,55 +3,63 @@ package com.day4.ex_handling;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
-class Door implements  AutoCloseable{
 
-    public void doLogicDoor(){
-        System.out.println("logic of door");
-        throw new NullPointerException("NPE");
-    }
-    public Door() {
-        System.out.println("ctr of door");
-    }
-    @Override
-    public void close() throws Exception {
-        System.out.println("closing the door");
-        throw new ArithmeticException("ArithmeticException");
-    }
-}
-class Window implements  AutoCloseable{
-    public void doLogicWindow(){
-        System.out.println("logic of Window");
-    }
-    public Window() {
-        System.out.println("ctr of Window");
-    }
-    @Override
-    public void close() throws Exception {
-        System.out.println("closing the Window");
-    }
+class MyResouce implements AutoCloseable {
+	public MyResouce() {
+		System.out.println("ctr of MyResouce");
+	}
+
+	public void useResource() {
+		System.out.println("using resources");
+		throw new ArithmeticException();
+	}
+
+	@Override
+	public void close() throws Exception {
+		System.out.println("close is called");
+		throw new NullPointerException();
+	}
+
 }
 
 public class H_AutomaticResourceMgt {
-    public static void main(String[] args) {
-        //kab lagaga? ARM can be applied to a class iff it extends a class ie called AutoClosbable
+	public static void main(String[] args) {
 
+		// How ARM works? Java 1.7
+		// if any class implements AutoCloseable interface then java give
+		// gurantee to
+		// close the resouce as soon as variable goes out of the scope?
 
-        try(Door door=new Door()){
-            door.doLogicDoor();
-        }catch (Exception ex){
-            System.out.println(ex.getClass().getName());
-             Throwable[] throwables= ex.getSuppressed();
-             Arrays.asList(throwables).forEach(e-> System.out.println(e));
-        }
+		// Suppressed Exception in java?
+		// Fever -- crocine --> suppress the fever
 
+		// right now NullPointerException was suppresed ?
+		// how to get inforation about this exception
 
-//
-//        try(Door door=new Door(); Window window=new Window()){
-//            door.doLogicDoor();
-//            window.doLogicWindow();
-//        }catch (Exception ex){
-//            ex.printStackTrace();
-//        }
+		try (MyResouce myResouce = new MyResouce()) {
+			myResouce.useResource();
+		} catch (Exception e) {
+			
+			//how to get inforation about suppresed ex
+			Throwable[] throwables = e.getSuppressed();
+			for (Throwable throwable : throwables) {
+				System.out.println(throwable);
+			}
+			System.out.println(e);
+		}
 
-    }
+		/*
+		 * //now u dont have to close the resouces , it is automatically close
+		 * 
+		 * try (Scanner scanner = new Scanner(System.in)) {
+		 * System.out.println("PE ur name"); String name = scanner.nextLine();
+		 * System.out.println(name); }
+		 */
+
+		// Automatic resouce managemnt java 7
+		// ========================================
+		// kab lagaga? ARM can be applied to a class iff it
+		// extends a class ie called AutoClosbable
+
+	}
 }

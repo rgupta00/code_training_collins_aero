@@ -1,0 +1,16 @@
+package com.day4.ex_handling;
+class X{
+	X(){
+		System.out.println("Ctr of X");
+	}
+}
+class Y extends X{
+	Y(){
+		System.out.println("Ctr of Y");
+	}
+}
+public class F_ExHandingAndCtr {
+    public static void main(String[] args) {
+        
+    }
+}

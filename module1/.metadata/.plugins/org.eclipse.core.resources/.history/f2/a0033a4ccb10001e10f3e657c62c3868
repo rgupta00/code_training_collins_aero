@@ -1,0 +1,38 @@
+package com.day4.ex_handling;
+
+//Q: how to get information about suppresed ex if u are not using autoclosable?
+
+class TryEx extends Exception {
+}
+
+class FinallyEx extends Exception {
+}
+
+public class I_SuppressedEx {
+
+	public static void main(String[] args) {
+		//me 
+		try {
+			foo();
+		} catch (Exception e) {
+			Throwable[]throwables=e.getSuppressed();
+			
+			for(Throwable t: throwables){
+				System.out.println(t);
+			}
+			
+			System.out.println(e);
+		}
+	}
+
+	
+	//amit
+	private static void foo() throws Exception {
+
+		try {
+			throw new TryEx();
+		} finally {
+			throw new FinallyEx();
+		}
+	}
+}

@@ -1,0 +1,30 @@
+package com.session6.ex_handling2;
+
+//What is the use of it
+//Exception wrapping and re-throwing
+//------------------------------------
+//in business requirments i need to send some exception to other method by first wrapping into my own 
+//excception : ex wrapping
+//and i can throw that ex from catch block : it is called re-throwing 
+
+
+class Cal{
+	public int divide(int a, int b){
+		if(b==0)
+			throw new ArithmeticException("deno must not be zero");
+		return a/b;
+	}
+}
+
+public class DemoExWrappingAndRethrowing {
+    public static void main(String[] args) {
+
+    	try{
+    	Cal cal=new Cal();
+    	int result=cal.divide(2, 0);
+    	}catch(ArithmeticException e){
+    		System.out.println(e.getMessage());
+    	}
+      
+    }
+}

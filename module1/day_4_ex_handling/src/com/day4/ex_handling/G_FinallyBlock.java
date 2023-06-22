@@ -1,47 +1,47 @@
 package com.day4.ex_handling;
 
 public class G_FinallyBlock {
-    public static void main(String[] args) {
-        //Why we need
+	public static void main(String[] args) {
+		// Why we need
 
-        //good programming practice
-        /*
-            1. never return values form finally block
-            2. never throw ex from finally block
+		// good programming practice about finallly block
+		/*
+		 * 1. never return values form finally block 2. never throw ex from
+		 * finally block
+		 */
 
-         */
-        try{
-            myMethod();
-        }catch (Exception e){
-            System.out.println(e);
-        }
+//		int value = foo();
+//		System.out.println(value);
+		
+		
+		
+		//Me
+		try{
+			bar();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		
 
-    }
+	}
 
-    private static int myMethod() {
-        try{
-             throw new NullPointerException("NullPointerException");
+	//Ashok
+	private static void bar() {
+		try{
+			throw new ArithmeticException();
+		}finally{
+			throw new NullPointerException();// it is a bad code to throw ex from finally block
+		}
+	}
 
-        }finally {
-            throw new ArithmeticException("ArithmeticException") ;
-        }
-    }
+//	private static int foo() {
+//		try {
+//			return 10;
+//		} finally {
+//			
+//			//returing some value from finally block is a bad programming practice
+//			return 11;
+//		}
+//	}
 
-
-
-//    private static int myMethod() {
-//        try{
-//            return 20;
-//        }finally {
-//            return 10;
-//        }
-//    }
 }
-
-
-
-
-
-
-
-
