@@ -1,20 +1,487 @@
 
 Discussion day 4:
 ====================
-
+* Inner class in java 
 * Exception handing in java
 * try catch throw throws and finally key words
 * Checked vs unchecked ex
 * some common java exceptions
+* Exception handing and Overriding
+* Exception handing and constructor
 * custom exceptions
-* Exception handing best practices
 * Automatic resouce management in details
 * Exception wrapping and rethrowing
 * suppressed exceptions
+* Exception handing best practices
 
 
 
 
+What is inner classes, type of inner classes
+-------------------------------------------------
+
+
+hello world on inner class:
+----------------------------
+
+//1. top level inner class
+/*
+ * 	class LL{
+ * 		class Node{
+ * 		}
+ * 	}
+ */
+
+//u cant create the object of inner class without the valid object of outer class
+class Outer{
+	private int i=55;
+	
+   class Inner{
+	   private int i=555;
+	   public void doInner(){
+		   //Outer.this.i	=> use to access data of the outer class
+		   //this.i			=> use to access data of the same class
+		   System.out.println("doInner method of inner class "+Outer.this.i);
+	   }
+   }
+}
+
+
+public class A_TopLevelInnerClass {
+    public static void main(String[] args) {
+    
+//    	//Syn to create object of innner class
+//      Outer.Inner inner=new Outer().new Inner();
+//      inner.doInner();
+    	
+    	//Syn to create object of innner class
+    	Outer outer=new Outer();
+    	
+        Outer.Inner inner=outer.new Inner();
+        inner.doInner();
+      
+    }
+}
+
+
+
+
+hello world on method local inner class:
+----------------------------
+class A1{
+      
+        void foo(){
+        	  //method local inner class
+            class X{
+            	X(){
+            		System.out.println("ctr of X");
+            	}
+            	void fooX(){
+            		System.out.println("foox is called");
+            	}
+            }
+            
+            X x=new X();
+            x.fooX();
+            
+      }
+}
+public class B_MethodLevelInnerClass {
+    public static void main(String[] args) {
+        A1 a=new A1();
+        a.foo();
+        A1 a2=new A1();
+        a2.foo();
+    }
+}
+
+Note: if u see the method local inner class is loaded twice
+--------------------------------------------------
+
+
+hello world on annonymous inner class: performance problem :(
+----------------------------
+	
+	interface Foodish {
+	void food();
+}
+
+public class C_AnnInnerClass {
+	public static void main(String[] args) {
+
+		// Syn of annonymous inner class
+		
+		//java 8 : lambada expression , it used to do stream processing java 8
+		
+		
+		Runnable runnable=new Runnable() {
+			
+			@Override
+			public void run() {
+				System.out.println("job of the thread");
+			}
+		};
+		
+		
+		
+		Foodish foodish = new Foodish() {
+
+			@Override
+			public void food() {
+				System.out.println("street food ...");
+			}
+		};
+
+		Foodish foodish2 = new Foodish() {
+
+			@Override
+			public void food() {
+				System.out.println("hotel food ...");
+			}
+		};
+
+		Foodish foodish3 = new Foodish() {
+
+			@Override
+			public void food() {
+				System.out.println("hotel food ...");
+			}
+		};
+
+		foodish.food();
+
+		foodish2.food();
+
+	}
+}
 
 	
 	
+	
+	
+How to move form annonymous inner class to lamaba expression
+========================================================
+
+public class C1_LambdaEx {
+	public static void main(String[] args) {
+
+		// Syn of annonymous inner class
+		
+		//java 8 : lambada expression , it used to do stream processing java 8
+		
+		
+		//how to move from ann innner to lamaba
+		//lambda have better performance as compared to ann inner class
+		
+		//java 8=>type inference ? intellegent guss
+		
+		Runnable runnable=new Runnable() {
+			
+			@Override
+			public void run() {
+				System.out.println("job of the thread");
+			}
+		};
+		
+		
+	
+		//Step No 1:
+//		Foodish foodish = new Foodish() {
+//
+//			@Override
+//			public void food() {
+//				System.out.println("street food ...");
+//			}
+//		};
+
+//		Foodish foodish = ()-> {
+//				System.out.println("street food ...");
+//			
+//		};
+		
+		Foodish foodish = ()-> System.out.println("street food ...");
+		
+		foodish.food();
+	
+
+	}
+}
+----------------------------------------------------------------
+
+What is ex handing:
+-------------------
+exceptions: problematic situation that u need to deal in ur code
+otherwise ur application will be crashed
+
+ ex handing: is way to to deal with exceptions
+ 
+ keywords in exceptions handing:
+ 
+ try catch throws thow and finally 
+ 
+	finally(used in exceptions handing)	and final (constant)
+	
+
+
+Demo: where my program is not "robust" and exceptions handing make it robust?
+-----------------------------------------
+
+
+
+Attept 1:
+-------------
+
+bad code":as it dont handle problem
+1. divide by zero
+2. if input is not int
+
+     System.out.println("--------------------");
+
+		int i, j, k;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("PE value of first no");
+		i = scanner.nextInt();
+		j = scanner.nextInt();
+		k = i / j;
+		System.out.println("k : " + k);
+		
+		System.out.println("-------------------");
+		
+
+
+
+//Attempt 2 : better handling the ex... but about the closing the resouces?
+==============================================================================
+
+//		System.out.println("--------------------");
+//
+//		Scanner scanner=null;
+//		try{
+//			//risky code
+//			int i, j, k;
+//			 scanner = new Scanner(System.in);
+//			System.out.println("PE value of first no");
+//			i = scanner.nextInt();
+//			j = scanner.nextInt();
+//			k = i / j;
+//			System.out.println("k : " + k);
+//			scanner.close();
+//		}catch(ArithmeticException e){
+//			System.out.println("divide by zero is not possible");
+//			scanner.close();
+//		}catch(InputMismatchException e){
+//			System.out.println("u should only enter ints");
+//			scanner.close();
+//		}
+//		
+//		System.out.println("-------------------");
+		
+		
+
+
+
+//Attempt 3 :  closing the resouces using finallly block
+==============================================================================
+
+System.out.println("--------------------");
+
+		Scanner scanner=null;
+		try{
+			//risky code
+			int i, j, k;
+			 scanner = new Scanner(System.in);
+			System.out.println("PE value of first no");
+			i = scanner.nextInt();
+			j = scanner.nextInt();
+			k = i / j;
+			System.out.println("k : " + k);
+			
+		}catch(ArithmeticException e){
+			System.out.println("divide by zero is not possible");
+			
+		}catch(InputMismatchException e){
+			System.out.println("u should only enter ints");
+			
+		}finally{
+			//always going to execute wheter ex comes on not?
+			scanner.close();
+		}
+		
+		System.out.println("-------------------");
+		
+
+
+//Attempt 4: i dont to close the resouce myself it should be automatically close
+=====================================================================================
+		//java 7: java peoples have introduced a concept ie called ARM
+		//What is automatic resouce mgt: hey programmer u dont hv to close the resouce urself
+		//i i will do on behalf of you....
+	
+		try(Scanner scanner=new Scanner(System.in)){
+			int i, j, k;
+			System.out.println("PE value of first no");
+			i = scanner.nextInt();
+			j = scanner.nextInt();
+			k = i / j;
+			System.out.println("k : " + k);
+			
+		}catch(ArithmeticException e){
+			System.out.println("divide by zero is not possible");
+			
+		}catch(InputMismatchException e){
+			System.out.println("u should only enter ints");
+		}
+		
+
+
+//Attempt 5: u can simplified the syn of catch block ( | op with exceptions java 7)
+=====================================================================================
+			
+				try(Scanner scanner=new Scanner(System.in)){
+					int i, j, k;
+					System.out.println("PE value of first no");
+					i = scanner.nextInt();
+					j = scanner.nextInt();
+					k = i / j;
+					System.out.println("k : " + k);
+					
+				}catch(ArithmeticException | InputMismatchException e){
+					System.out.println(e);
+					
+				}	
+
+
+
+
+
+
+Checked vs unchecked ex
+========================
+Compile time ex vs run time exceptions     X
+
+
+FileNotFoundException is a exmple of checked exceptions
+compiler acting like my wife and telling me what happen if file is not file
+
+i have 2 option 
+
+1. i dont care ... .throws kb  (//Note using throws on main is a bad idea)
+2. u apply try catch
+
+
+public class B_CheckedVsUncheckedEx {
+	
+	//Note using throws on main is a bad idea
+	
+    public static void main(String[] args) throws FileNotFoundException {
+       //FileHandling producer checked ex
+        //try some basics file handling Q
+    	
+    	BufferedReader br=new BufferedReader(new FileReader(new File("demo2.txt")));
+    	System.out.println("----------------");
+    }
+}
+
+Example of unchecekd ex:
+------------------------
+
+ System.out.println("--------------------");
+
+			int i, j, k;
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("PE value of first no");
+			i = scanner.nextInt();
+			j = scanner.nextInt();
+			k = i / j;
+			System.out.println("k : " + k);
+			
+			System.out.println("-------------------");
+			
+File handing example:
+----------------------
+
+
+public class B_CheckedVsUncheckedEx {
+	
+	//Note using throws on main is a bad idea
+	
+    public static void main(String[] args)  {
+       //FileHandling producer checked ex
+        //try some basics file handling Q
+    	
+    	try {
+			BufferedReader br=new BufferedReader(new FileReader(new File("demo.txt")));
+			String line=null;
+			
+			while((line=br.readLine())!=null){
+				System.out.println(line);
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		}catch(IOException e){
+			System.out.println(e);
+		}
+    	System.out.println("----------------");
+    }
+}
+
+
+
+Assignements: try to practice these common java exceptions
+-------------------------------------------------
+      //        ArrayStoreExeption
+
+        //        NullPointerException
+
+        //        ArithmeticException
+
+        //        IOException
+
+        //        ArrayIndexOutOfBoundsException
+//        int arr[]={3,6,7};
+//        System.out.println(arr[5]);
+        //        ClassNotFoundException
+
+        //        IllegalArgumentException
+
+        //        FileNotFoundException
+
+        //         IllegalStateException
+
+        //        ClassCastException
+
+        //        ArrayStoreExeption
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+---------------
+key topics :
+	* OOPS
+	* ex handing
+	* data str
+	* threads
+---------------
+	FSD java
+	
+	<-------------front end ---------------------> |<---------------back end ------>
+	
+			ES6, Reactjs							spring boot + hib + spring data+ docker 
+													+ k88+ aws....

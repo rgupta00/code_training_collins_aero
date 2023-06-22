@@ -6,15 +6,118 @@ import java.util.Scanner;
 
 public class A_NeedOfExHandling {
 	public static void main(String[] args) {
-		System.out.println("--------------------");
+		
+		//Attempt 5: u can simplified the syn of catch block ( | op with exceptions java 7)
+			
+				try(Scanner scanner=new Scanner(System.in)){
+					int i, j, k;
+					System.out.println("PE value of first no");
+					i = scanner.nextInt();
+					j = scanner.nextInt();
+					k = i / j;
+					System.out.println("k : " + k);
+					
+				}catch(ArithmeticException | InputMismatchException e){
+					System.out.println(e);
+					
+				}	
+		
+		
+		
+	
+//		//Attempt 4: i dont to close the resouce myself it should be automatically close
+//		//java 7: java peoples have introduced a concept ie called ARM
+//		//What is automatic resouce mgt: hey programmer u dont hv to close the resouce urself
+//		//i i will do on behalf of you....
+//	
+//		try(Scanner scanner=new Scanner(System.in)){
+//			int i, j, k;
+//			System.out.println("PE value of first no");
+//			i = scanner.nextInt();
+//			j = scanner.nextInt();
+//			k = i / j;
+//			System.out.println("k : " + k);
+//			
+//		}catch(ArithmeticException e){
+//			System.out.println("divide by zero is not possible");
+//			
+//		}catch(InputMismatchException e){
+//			System.out.println("u should only enter ints");
+//		}
+		
+		
+		
+//		System.out.println("--------------------");
+//
+//		Scanner scanner=null;
+//		try{
+//			//risky code
+//			int i, j, k;
+//			 scanner = new Scanner(System.in);
+//			System.out.println("PE value of first no");
+//			i = scanner.nextInt();
+//			j = scanner.nextInt();
+//			k = i / j;
+//			System.out.println("k : " + k);
+//			
+//		}catch(ArithmeticException e){
+//			System.out.println("divide by zero is not possible");
+//			
+//		}catch(InputMismatchException e){
+//			System.out.println("u should only enter ints");
+//			
+//		}finally{
+//			//always going to execute wheter ex comes on not?
+//			scanner.close();
+//		}
+//		
+//		System.out.println("-------------------");
+//		
+		
+		//Attempt 2 : better handling the ex... but about the closing the resouces?
+//		System.out.println("--------------------");
+//
+//		Scanner scanner=null;
+//		try{
+//			//risky code
+//			int i, j, k;
+//			 scanner = new Scanner(System.in);
+//			System.out.println("PE value of first no");
+//			i = scanner.nextInt();
+//			j = scanner.nextInt();
+//			k = i / j;
+//			System.out.println("k : " + k);
+//			scanner.close();
+//		}catch(ArithmeticException e){
+//			System.out.println("divide by zero is not possible");
+//			scanner.close();
+//		}catch(InputMismatchException e){
+//			System.out.println("u should only enter ints");
+//			scanner.close();
+//		}
+//		
+//		System.out.println("-------------------");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	     System.out.println("--------------------");
 
-		int i, j, k;
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("PE value of first no");
-		i = scanner.nextInt();
-		j = scanner.nextInt();
-		k = i / j;
-		System.out.println("k : " + k);
+			int i, j, k;
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("PE value of first no");
+			i = scanner.nextInt();
+			j = scanner.nextInt();
+			k = i / j;
+			System.out.println("k : " + k);
+			
+			System.out.println("-------------------");
+			
 	}
 
 }

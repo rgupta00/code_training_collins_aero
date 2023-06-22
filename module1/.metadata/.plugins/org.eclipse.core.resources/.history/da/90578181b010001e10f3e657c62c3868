@@ -1,0 +1,32 @@
+package com.day4.ann_innerclass;
+//ann inner class
+interface Foodish{
+    void food();
+}
+public class C_AnnInnerClass {
+    public static void main(String[] args) {
+
+    	//Syn of annonymous inner class
+        Foodish foodish=new Foodish() {
+			
+			@Override
+			public void food() {
+				System.out.println("street food ...");
+			}
+		};
+		
+		   Foodish foodish2=new Foodish() {
+				
+				@Override
+				public void food() {
+					System.out.println("hotel food ...");
+				}
+			};
+			
+		foodish.food();
+		
+		foodish2.food();
+
+
+    }
+}

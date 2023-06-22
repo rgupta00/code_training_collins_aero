@@ -1,4 +1,16 @@
 package com.day4.ex_handling;
+
+//SBM
+
+//AccountCreationException
+//NotSufficientExcetion
+//OverFundException
+
+
+/*
+ * min balance for oping the a/c : 10000
+ * u c'nat deopost more then 15L in saving account
+ */
 class Account{
     private int id;
     private String name;

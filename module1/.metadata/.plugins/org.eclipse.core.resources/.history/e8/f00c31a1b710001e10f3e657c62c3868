@@ -1,0 +1,27 @@
+package com.day4.ex_handling;
+
+import java.io.*;
+
+public class B_CheckedVsUncheckedEx {
+	
+	//Note using throws on main is a bad idea
+	
+    public static void main(String[] args)  {
+       //FileHandling producer checked ex
+        //try some basics file handling Q
+    	
+    	try {
+			BufferedReader br=new BufferedReader(new FileReader(new File("demo.txt")));
+			String line=null;
+			
+			while((line=br.readLine())!=null){
+				
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		}catch(IOException e){
+			System.out.println(e);
+		}
+    	System.out.println("----------------");
+    }
+}

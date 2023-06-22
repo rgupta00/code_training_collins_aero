@@ -21,7 +21,10 @@ public class C_SomeCommonExInJava {
 
    
     public static void main(String[] args) {
-        //ArrayStoreExeption
+    	
+//    	Dog dog=null;
+//    	dog.sound();
+        //        ArrayStoreExeption
 
         //        NullPointerException
 
