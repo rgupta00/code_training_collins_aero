@@ -1,0 +1,12 @@
+package com.day5.ex6.map_examples;
+import java.util.*;
+import java.util.Map.Entry;
+public class DemoHashMap {
+
+	public static void main(String[] args) {
+		//user define key ?
+		//emp name --> salary
+		
+		
+	}
+}

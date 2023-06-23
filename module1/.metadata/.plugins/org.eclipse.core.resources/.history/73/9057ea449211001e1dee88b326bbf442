@@ -1,0 +1,21 @@
+package com.day5.ex7.queue_examples;
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+public class B_UserDefineObjectQueue {
+	
+	public static void main(String[] args) {
+		
+		//Creating user define Queue
+		
+		
+//		queue.offer(new JobWork(12, "making die of tyre", 2));
+//		queue.offer(new JobWork(120, "making die of break", 1));
+//		queue.offer(new JobWork(12, "making die of head light", 4));
+		
+		
+	}
+	
+
+}

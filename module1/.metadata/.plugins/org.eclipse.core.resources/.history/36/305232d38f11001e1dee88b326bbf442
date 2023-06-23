@@ -1,0 +1,39 @@
+package com.day5.ex6.map_examples;
+import java.util.*;
+import java.util.Map.Entry;
+
+class Key{
+	private int k;
+
+	public Key(int k) {
+		this.k = k;
+	}
+
+	@Override
+	public String toString() {
+		return "Key [k=" + k + "]";
+	}
+
+	public int getK() {
+		return k;
+	}
+	
+	
+}
+
+public class DemoHashMap {
+
+	public static void main(String[] args) {
+		//user define key ?
+		//emp name --> salary
+		Map<Key, Employee> map=new HashMap<Key, Employee>();
+		map.put(new Key(12), new Employee(12, "Raj", "delhi", 567000));
+		map.put(new Key(2), new Employee(2, "Suman", "Noida", 517000));
+		
+		boolean isPresent= map.containsKey(new Key(12));
+		System.out.println(isPresent);
+		
+		
+		
+	}
+}

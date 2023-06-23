@@ -1,0 +1,17 @@
+package com.day5.ex7.queue_examples;
+import java.util.*;
+public class A_DemoQueue {
+	
+	public static void main(String[] args) {
+		PriorityQueue<Integer> queue=new PriorityQueue<>();
+		
+		//offer method is used to add data to the priorirty queue
+		queue.add(5550);
+		queue.offer(555);
+		queue.offer(-5);
+		queue.offer(5);
+		queue.offer(95);
+		
+	}
+
+}

@@ -1,0 +1,35 @@
+package com.day5.ex7.queue_examples;
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+public class B_UserDefineObjectQueue {
+	
+	public static void main(String[] args) {
+		
+		//Creating user define Queue
+		PriorityQueue<JobWork> queue=new PriorityQueue<>(new Comparator<JobWork>() {
+
+			@Override
+			public int compare(JobWork o1, JobWork o2) {
+				return Integer.compare(o2.getPriority(), o1.getPriority());
+			}
+		});
+		
+		queue.offer(new JobWork(12, "making die of tyre", 2));
+		queue.offer(new JobWork(120, "making die of break", 1));
+		queue.offer(new JobWork(12, "making die of head light", 4));
+		
+//		JobWork jobWork=queue.poll();
+//		System.out.println(jobWork);
+		
+		while(!queue.isEmpty()){
+			System.out.println(queue.poll());
+		}
+		
+		
+		
+	}
+	
+
+}

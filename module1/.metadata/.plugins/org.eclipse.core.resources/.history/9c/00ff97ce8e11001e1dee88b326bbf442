@@ -1,0 +1,22 @@
+package com.day5.ex4.map_example;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
+public class B_IteratingHashMap {
+	
+	public static void main(String[] args) {
+		Map<String, Integer> map=new TreeMap<>();
+		map.put("ekta", 80);
+		map.put("gunika", 100);
+		map.put("raj", 84);
+		map.put("keshav", 90);
+		map.putIfAbsent("keshav", 89);
+		
+		map.forEach((k,v)-> System.out.println(k+" : "+ v));
+		
+	}
+
+}

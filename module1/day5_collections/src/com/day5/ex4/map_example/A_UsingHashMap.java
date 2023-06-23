@@ -11,6 +11,9 @@ public class A_UsingHashMap {
 		map.put("keshav", 90);
 		map.putIfAbsent("keshav", 89);
 		
+		Integer value= map.get("ekta");
+		
+		
 		System.out.println(map);
 		
 		//how to iterator through map?

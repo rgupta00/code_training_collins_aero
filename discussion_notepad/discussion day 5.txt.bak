@@ -1,15 +1,850 @@
 
-Discussion day 5:
+revision exeption handling in java:
+---------------------------------
+ type of ex: checked vs unchecked ?
+ 
+ * all ex happens at run time
+ * for checked ex compile check that it can occour and he is stopping u compile ur code
+	throws 
+	try catch
+	
+* try catch throw throws and finally
+
+throw and throws
+
+final vs finally
+
+Discussion day 5: Collection api
 ====================
 
+Collection is aka ready made ds ( data structure)
+
+ data structure: talk about how to store and retive data for optimal performance
+ linklist, stack, quues, tree , graph, sorting tech...
+
 * Object class in java
+---------------------------
+mother class in java 
+
+class A extends Object{
+
+}
+
+
+
+public class java.lang.Object {
+  public java.lang.Object();
+  public final native java.lang.Class<?> getClass();
+  public native int hashCode();
+  public boolean equals(java.lang.Object);
+  protected native java.lang.Object clone() throws java.lang.CloneNotSupportedException;
+  public java.lang.String toString();
+  public final native void notify();
+  public final native void notifyAll();
+  public final native void wait(long) throws java.lang.InterruptedException;
+  public final void wait(long, int) throws java.lang.InterruptedException;
+  public final void wait() throws java.lang.InterruptedException;
+  protected void finalize() throws java.lang.Throwable;
+  static {};
+}
+
+
+
+What is the need of toString() method 
+===================================
+
+public class Employee  {
+	private int id;
+	private String name;
+	private String city;
+	private double salary;
+	
+	public Employee(int id, String name, String city, double salary) {
+		this.id = id;
+		this.name = name;
+		this.city = city;
+		this.salary = salary;
+	}
+	
+	public Employee() {}
+
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+}
+
+
+Now add toString method : ie used to print useful state of the object
+======================================================================
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", city=" + city
+				+ ", salary=" + salary + "]";
+	}
+
+
+
+
+Need of equals method overriding
+===============================
+		Employee employee1=new Employee(1, "raj", "noida",70000);
+		Employee employee2=new Employee(1, "raj", "noida",70000);
+		
+//		//if both are same of not
+//		//compare the addresses
+//		if(employee1==employee2){
+//			System.out.println("are same address");
+//		}else{
+//			System.out.println("are not same");
+//		}
+		
+		//if both are same of not
+		//compare the addresses
+		if(employee1.equals(employee2)){
+			System.out.println("are same address");
+		}else{
+			System.out.println("are not same");
+		}
+		
+		
+=> it is going to give false , but both object state is same
+==> overide method of Object : equals()
+		
+		
+		this is original code inside equals method:
+		-----------------------------------------
+		useless:
+		----------------------------------
+   public boolean equals(Object obj) {
+        return (this == obj);
+    }
+	
+	=> now u need to override this method 
+	=> it is a good programming practice to override equals and hashCode togather *
+	
+	
+	
+	Take the help of eclise ide to generate the code:
+	===========================================
+	@Override
+	public int hashCode() {
+		return name.length();
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (Double.doubleToLongBits(salary) != Double
+				.doubleToLongBits(other.salary))
+			return false;
+		return true;
+	}
+
+
+then : equals method works correctly
+============
+		if(employee1.equals(employee2)){
+			System.out.println("are same address");
+		}else{
+			System.out.println("are not same");
+		}
+		
+what is clonnnig :
+======================
+process of making duplicate copy of an object
+
+	//step 1
+	//used to cloning of the object : duplicate copy of the object
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+
+
+//step 2: ensure that ur class imple... clonnable interface
+public class Employee implements Cloneable {
+
+}
+
+
+//step 3:
+
+public class C_CloneMethod {
+	public static void main(String[] args) throws CloneNotSupportedException {
+		Employee employee=new Employee(1, "raj", "noida",70000);
+		Employee employeeClonned= (Employee) employee.clone();
+		if(employee.equals(employeeClonned)){
+			System.out.println("true");
+		}else{
+			System.out.println("false");
+		}
+	}
+
+}
+
+		
 * Collection framewrok
+===========================
+aka readymade ds in java
+
+most imp classes and interface inside it?
+
+
+Ex with arrayList
+=====================
+* internally use array that need to grow at run time
+
+//What is collection:
+		//how to use ArrayList, LinkedList
+		//basics examples, sorting, searching printing
+		
+		List<String> list=new ArrayList<>();
+		list.add("foo");
+		list.add("bar");
+		list.add("jar");
+		
+		//System.out.println(list);
+		
+		//one by one: using enhance for loop
+		
+//		for(String data: list){
+//			System.out.println(data);
+//		}
+		
+		//using iterator (is a design pattern*)
+		//way to iterate (travese a collection)
+//		Iterator<String> it=list.iterator();
+//		while(it.hasNext()){
+//			
+//			System.out.println(it.next());
+//		}
+		
+		//is it possible to delete while iterating the collection?
+		
+		Iterator<String> it=list.iterator();
+		while(it.hasNext()){
+			String data=it.next();
+				if(data.equals("foo"))
+			it.remove();
+		}
+		System.out.println(list);
+
+
+how to sort the collection?
+=========================
+Collections.sort(list);
+
+
+	List<String> list=new ArrayList<>();
+		list.add("foo");
+		list.add("bar");
+		list.add("jar");
+		
+		
+		for(String data: list){
+			System.out.println(data);
+		}
+		
+		Collections.sort(list);
+		
+		System.out.println("-------------------------");
+		for(String data: list){
+			System.out.println(data);
+		}
+		
+op:
+=
+foo
+bar
+jar
+-------------------------
+bar
+foo
+jar
+		
+
+
+
+
+
 * Sorting user define collection: comparable vs comparator
+================================================================
+
+
+import java.util.Comparator;
+
+//Comparable vs Compartor
+
+/*
+ * Comparable is used for natural sort ? default sort
+ * Compartor is used to get extra sort seq
+ */
+
+//Sorting employee list as per name
+class EmployeeNameSorter implements Comparator<Employee>{
+	@Override
+	public int compare(Employee o1, Employee o2) {
+		return o1.getName().compareTo(o2.getName());
+	}
+}
+
+class EmployeeSalarySorter implements Comparator<Employee>{
+	@Override
+	public int compare(Employee o1, Employee o2) {
+		return Double.compare(o2.getSalary(), o1.getSalary());
+	}
+}
+
+//if name is same then sort as per salary
+class EmployeeNameThenSalarySorter implements Comparator<Employee>{
+	@Override
+	public int compare(Employee o1, Employee o2) {
+		int result =o1.getName().compareTo(o2.getName());
+		if(result==0){
+			result=Double.compare(o1.getSalary(), o2.getSalary());
+		}
+		
+		return result;
+	}
+	
+}
+
+
+public class Employee implements Comparable<Employee>{
+	private int id;
+	private String name;
+	private String city;
+	private double salary;
+	
+	public Employee(int id, String name, String city, double salary) {
+		this.id = id;
+		this.name = name;
+		this.city = city;
+		this.salary = salary;
+	}
+	
+	public Employee() {}
+
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", city=" + city
+				+ ", salary=" + salary + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((city == null) ? 0 : city.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(salary);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (Double.doubleToLongBits(salary) != Double
+				.doubleToLongBits(other.salary))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int compareTo(Employee o) {
+		return Integer.compare(this.getId(), o.getId());
+	}
+
+}
+
+
+import java.util.*;
+public class D_SortingUserDefineObject {
+
+	public static void main(String[] args) {
+		//Natural sort vs extra sort seq
+		//Comparable vs Comparator=> to sort user define data
+		
+		List<Employee>employees=new ArrayList<Employee>();
+		employees.add(new Employee(123,	"zen", "delhi", 45000.00));
+		employees.add(new Employee(13,	"sumit", "noida", 42000.00));
+		employees.add(new Employee(93,	"sumit", "banglore", 49000.00));
+		employees.add(new Employee(939,	"amit", "chennai", 59000.00));
+		
+		System.out.println("---printing all emps as it is-------------");
+		for(Employee e: employees){
+			System.out.println(e);
+		}
+		
+		System.out.println("sort the employee as per id");
+		Collections.sort(employees);
+		for(Employee e: employees){
+			System.out.println(e);
+		}
+		
+		System.out.println("sort as per name of temployees");
+		
+		Collections.sort(employees, new EmployeeNameSorter());
+		for(Employee e: employees){
+			System.out.println(e);
+		}
+		
+		
+		System.out.println("sort as per employee salary (rev  sort)");
+		
+		Collections.sort(employees, new EmployeeSalarySorter());
+		for(Employee e: employees){
+			System.out.println(e);
+		}
+		
+		System.out.println("sort Employee by Name if name is same Then by SalarySorter");
+		Collections.sort(employees, new EmployeeNameThenSalarySorter());
+		
+		for(Employee e: employees){
+			System.out.println(e);
+		}
+	}
+}
+
+
+
+
+
+Now LinkList:
+===================
+under the hood it will use DLL
+
+List<String> list=new LinkedList<>();
+		list.add("foo");
+		list.add("bar");
+		list.add("jar");
+		
+		//System.out.println(list);
+		
+		//one by one: using enhance for loop
+		
+		for(String data: list){
+			System.out.println(data);
+		}
+		
+		
+how LL and AL differ:
+======================
+when to use what
+
+ArrayList: use growable array, internally using array... random access in array is very fast
+O(1)
+update operation make it dam slow
+
+List<Integer> list=new ArrayList<>();
+
+
+Internal using DLL
+random acces is not possible in DLL  O(N)
+but adding /removing is faster
+
+
+
+List<Integer> list=new LinkedList<>();
+
+
+import java.util.*;
+
+public class C_PerformanceComparisionALvsLL {
+	
+	public static void main(String[] args) {
+		List<Integer> list=new ArrayList<Integer>();
+		List<Integer> list2=new LinkedList<Integer>();
+		
+		calculatePerformance(list);
+	}
+
+	//peroframce diff bw LL and AL
+	 static void calculatePerformance(List<Integer> list) {
+		 for(int i=0;i<1E5; i++) {
+			 list.add(i);
+		 }
+		long start=System.currentTimeMillis();
+		
+		for(int i=0;i<1E5; i++) {
+			 list.add(0,i);
+		 }
+
+		long end=System.currentTimeMillis();
+		System.out.println("time taken: "+(end-start)+" ms");
+	}
+
+}
+
 * List: LinkList, ArrayList, performance
+
+
+
+
+
+
+
+
 * Set: HashSet, LinkedHashSet, TreeSet
+=============================================
+Dont allow duplicate
+
+HashSet: is internally using hashing*
+		ie way it is fastest
+		it dont maintain the insertion order of the data
+
+LinkedHashSet:
+	it maintain order of intersertion
+	
+TreeSet
+	it give u data in sorted order
+	
+	
+HashSet
+=============
+
+		Set<String> set=new HashSet<>();
+		System.out.println(set.add("foo"));
+		System.out.println(set.add("bar"));
+		System.out.println(set.add("jar"));
+		System.out.println(set.add("jar"));
+		
+		
+		for(String d: set){
+			System.out.println(d);
+		}
+		
+		
+	
+B_LinkedHashSet
+=================
+	
+public class B_LinkedHashSet {
+
+	public static void main(String[] args) {
+		
+		Set<String> set=new LinkedHashSet<>();
+		set.add("foo");
+		set.add("bar");
+		set.add("jar");
+		set.add("jar");
+		
+		
+		for(String d: set){
+			System.out.println(d);
+		}
+			
+		
+	}
+}
+
+
+C_TreeSet
+=========
+public class C_TreeSet {
+
+	public static void main(String[] args) {
+		
+		Set<String> set=new TreeSet<>();
+		set.add("foo");
+		set.add("bar");
+		set.add("jar");
+		set.add("jar");
+		
+		
+		for(String d: set){
+			System.out.println(d);
+		}
+	
+		
+	}
+}
+	
+How to print freq of each word:
+-------------------------------
+package com.day5.ex2.set_examples;
+import java.io.*;
+import java.util.*;
+public class D_PrintingAllUniqueWords {
+	public static void main(String[] args) {
+		/*
+		 * 1. open and read the fill till it not finished
+		 * 2. make token of each line 
+		 * 3. put tokens into TreeSet  ( dont allow duplicate)
+		 * 4. print it
+		 */
+		
+		Set<String> set=new TreeSet<>();
+		
+		try{
+			BufferedReader br=new BufferedReader(new FileReader("data.txt"));
+			String line=null;
+			
+			while((line =br.readLine())!=null){
+				String []tokens=line.split("");
+				for(String token : tokens){
+					set.add(token.toLowerCase());
+				}
+			}
+			
+		}catch(FileNotFoundException ex){
+			System.out.println(ex);
+		}catch(IOException ex){
+			System.out.println(ex);
+		}
+		
+		//print the set
+		for(String s: set){
+			System.out.print(s+" ");
+		}
+		
+	}
+
+}
+
+		
+
+Map: K,V
+===========
+tomcat use session mgt
+
+
+
+what is the diff bw various kind of maps:
+
+HashMap vs LinkedHashMap vs TreeMap
+----------------------------------------
+
+
+demo of LinkedHashMap
+=========================
+
+Map<String, Integer> map=new LinkedHashMap<>();
+		map.put("ekta", 80);
+		map.put("gunika", 100);
+		map.put("raj", 84);
+		map.put("keshav", 90);
+		map.putIfAbsent("keshav", 89);
+		
+		map.forEach((k,v)-> System.out.println(k+" : "+ v));
+		
+		
+		
+demo of HashMap
+=========================
+
+Map<String, Integer> map=new HashMap<>();
+		map.put("ekta", 80);
+		map.put("gunika", 100);
+		map.put("raj", 84);
+		map.put("keshav", 90);
+		map.putIfAbsent("keshav", 89);
+		
+		map.forEach((k,v)-> System.out.println(k+" : "+ v));
+		
+		
+
+demo of TreeMap
+=========================
+
+Map<String, Integer> map=new TreeMap<>();
+		map.put("ekta", 80);
+		map.put("gunika", 100);
+		map.put("raj", 84);
+		map.put("keshav", 90);
+		map.putIfAbsent("keshav", 89);
+		
+		map.forEach((k,v)-> System.out.println(k+" : "+ v));
+		
+		
+
+
+
+
+Overring the behaviour of sort logic
+===========================================
+
+	Map<String, Integer> map=new TreeMap<>(new Comparator<String>() {
+
+			@Override
+			public int compare(String o1, String o2) {
+				return o2.compareTo(o1);
+			}
+		});
+		
+		//or using lambda expression
+		
+		Map<String, Integer> map=new TreeMap<>(( o1,  o2)-> o2.compareTo(o1));
+		
+		map.put("ekta", 80);
+		map.put("gunika", 100);
+		map.put("raj", 84);
+		map.put("keshav", 90);
+		map.putIfAbsent("keshav", 89);
+		
+		map.forEach((k,v)-> System.out.println(k+" : "+ v));
+
+
+
+
+
 * Map: Internal , various type of map
+
+
+Queue: PriorityQueue vs BlockingQueue ( multithreading* using to solve producer consumer problem)
+=========================================================
+
+
+package com.day5.ex7.queue_examples;
+import java.util.*;
+public class A_DemoQueue {
+	
+	public static void main(String[] args) {
+		
+		//Default works as min heap
+		
+		PriorityQueue<Integer> queue=new PriorityQueue<>();
+		
+		//u can pass Comparator so that it can works as max heap
+		
+//		PriorityQueue<Integer> queue=new PriorityQueue<>(new Comparator<Integer>() {
+//			@Override
+//			public int compare(Integer o1, Integer o2) {
+//				return Integer.compare(o2, o1);
+//			}
+//		});
+		
+		//offer method is used to add data to the priorirty queue
+		//what is the diff bw queue.add(5550) and queue.offer(5550)
+		//Ans : in case of PriorityQueue no difference
+		//but in case of BlockingQueue there is a difference
+		
+		queue.offer(555);
+		queue.offer(-5);
+		queue.offer(5);
+		queue.offer(95);
+		
+		//poll() vs remove()
+		
+//		System.out.println(queue.remove());
+//		System.out.println(queue.remove());
+//		System.out.println(queue.remove());
+//		System.out.println(queue.remove());
+//		
+//		System.out.println(queue.remove());
+
+		
+		
+		//poll vs remove ? write it yourself
+		
+//		System.out.println(queue.poll());
+//		System.out.println(queue.poll());
+//		System.out.println(queue.poll());
+//		System.out.println(queue.poll());
+		//System.out.println(queue.poll());
+		
+	}
+
+}
+
+
+
+
 * generics
 * generic class and methods
+
+
+
 
 
 

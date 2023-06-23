@@ -1,0 +1,33 @@
+package com.day5.ex2.set_examples;
+import java.util.*;
+public class E_SortedSet {
+
+	public static void main(String[] args) {
+		
+		SortedSet<Integer> set=new TreeSet<>();
+		set.add(100);
+		set.add(101);
+		set.add(104);
+		set.add(106);
+		set.add(110);
+		set.add(115);
+		set.add(120);
+		
+		//getting first
+		//getting last
+		
+		//headset(106)=> all element before 106
+		//tailSet(106)=> all element after and including 106
+		
+		//setset(101,115)
+		
+		for(String d: set){
+			System.out.println(d);
+		}
+		
+		
+		
+		
+		
+	}
+}

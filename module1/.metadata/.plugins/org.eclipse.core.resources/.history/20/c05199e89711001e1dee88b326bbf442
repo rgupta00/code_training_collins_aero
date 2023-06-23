@@ -1,0 +1,68 @@
+package com.day5.ex9.creating_own_ds;
+
+class LinkList {
+	class Node {
+		int data;
+		Node next;
+
+		public Node(int data) {
+			this.data = data;
+			this.next = null;
+		}
+	}
+
+	Node head, tail = null;
+
+	public void addNode(int data) {
+		Node temp = new Node(data);
+		if (head == null) {
+			head = temp;
+			tail = temp;
+		} else {
+			tail.next = temp;
+			tail = temp;
+		}
+	}
+
+	public int removeFirst() {
+		if (head == null)
+			return -1;
+		else {
+			int tempDate = head.data;
+			head = head.next;
+			
+			return tempDate;
+		}
+
+	}
+
+	public void printLL() {
+		Node temp = head;
+		if (temp == null) {
+			System.out.println("it is emoty");
+			return;
+		}
+
+		while (temp != null) {
+			System.out.println(temp.data);
+			temp = temp.next;
+		}
+	}
+}
+
+public class A_LinkList {
+
+	public static void main(String[] args) {
+		LinkList linkList = new LinkList();
+		linkList.addNode(21);
+		linkList.addNode(1);
+		linkList.addNode(291);
+		linkList.addNode(91);
+
+		linkList.printLL();
+		
+		System.out.println(linkList.removeFirst());
+
+	}
+
+}

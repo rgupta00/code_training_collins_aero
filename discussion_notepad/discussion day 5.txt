@@ -538,11 +538,437 @@ but adding /removing is faster
 List<Integer> list=new LinkedList<>();
 
 
+import java.util.*;
 
+public class C_PerformanceComparisionALvsLL {
+	
+	public static void main(String[] args) {
+		List<Integer> list=new ArrayList<Integer>();
+		List<Integer> list2=new LinkedList<Integer>();
+		
+		calculatePerformance(list);
+	}
+
+	//peroframce diff bw LL and AL
+	 static void calculatePerformance(List<Integer> list) {
+		 for(int i=0;i<1E5; i++) {
+			 list.add(i);
+		 }
+		long start=System.currentTimeMillis();
+		
+		for(int i=0;i<1E5; i++) {
+			 list.add(0,i);
+		 }
+
+		long end=System.currentTimeMillis();
+		System.out.println("time taken: "+(end-start)+" ms");
+	}
+
+}
 
 * List: LinkList, ArrayList, performance
+
+
+
+
+
+
+
+
 * Set: HashSet, LinkedHashSet, TreeSet
+=============================================
+Dont allow duplicate
+
+HashSet: is internally using hashing*
+		ie way it is fastest
+		it dont maintain the insertion order of the data
+
+LinkedHashSet:
+	it maintain order of intersertion
+	
+TreeSet
+	it give u data in sorted order
+	
+	
+HashSet
+=============
+
+		Set<String> set=new HashSet<>();
+		System.out.println(set.add("foo"));
+		System.out.println(set.add("bar"));
+		System.out.println(set.add("jar"));
+		System.out.println(set.add("jar"));
+		
+		
+		for(String d: set){
+			System.out.println(d);
+		}
+		
+		
+	
+B_LinkedHashSet
+=================
+	
+public class B_LinkedHashSet {
+
+	public static void main(String[] args) {
+		
+		Set<String> set=new LinkedHashSet<>();
+		set.add("foo");
+		set.add("bar");
+		set.add("jar");
+		set.add("jar");
+		
+		
+		for(String d: set){
+			System.out.println(d);
+		}
+			
+		
+	}
+}
+
+
+C_TreeSet
+=========
+public class C_TreeSet {
+
+	public static void main(String[] args) {
+		
+		Set<String> set=new TreeSet<>();
+		set.add("foo");
+		set.add("bar");
+		set.add("jar");
+		set.add("jar");
+		
+		
+		for(String d: set){
+			System.out.println(d);
+		}
+	
+		
+	}
+}
+	
+How to print freq of each word:
+-------------------------------
+package com.day5.ex2.set_examples;
+import java.io.*;
+import java.util.*;
+public class D_PrintingAllUniqueWords {
+	public static void main(String[] args) {
+		/*
+		 * 1. open and read the fill till it not finished
+		 * 2. make token of each line 
+		 * 3. put tokens into TreeSet  ( dont allow duplicate)
+		 * 4. print it
+		 */
+		
+		Set<String> set=new TreeSet<>();
+		
+		try{
+			BufferedReader br=new BufferedReader(new FileReader("data.txt"));
+			String line=null;
+			
+			while((line =br.readLine())!=null){
+				String []tokens=line.split("");
+				for(String token : tokens){
+					set.add(token.toLowerCase());
+				}
+			}
+			
+		}catch(FileNotFoundException ex){
+			System.out.println(ex);
+		}catch(IOException ex){
+			System.out.println(ex);
+		}
+		
+		//print the set
+		for(String s: set){
+			System.out.print(s+" ");
+		}
+		
+	}
+
+}
+
+		
+
+Map: K,V
+===========
+tomcat use session mgt
+
+
+
+what is the diff bw various kind of maps:
+
+HashMap vs LinkedHashMap vs TreeMap
+----------------------------------------
+
+
+demo of LinkedHashMap
+=========================
+
+Map<String, Integer> map=new LinkedHashMap<>();
+		map.put("ekta", 80);
+		map.put("gunika", 100);
+		map.put("raj", 84);
+		map.put("keshav", 90);
+		map.putIfAbsent("keshav", 89);
+		
+		map.forEach((k,v)-> System.out.println(k+" : "+ v));
+		
+		
+		
+demo of HashMap
+=========================
+
+Map<String, Integer> map=new HashMap<>();
+		map.put("ekta", 80);
+		map.put("gunika", 100);
+		map.put("raj", 84);
+		map.put("keshav", 90);
+		map.putIfAbsent("keshav", 89);
+		
+		map.forEach((k,v)-> System.out.println(k+" : "+ v));
+		
+		
+
+demo of TreeMap
+=========================
+
+Map<String, Integer> map=new TreeMap<>();
+		map.put("ekta", 80);
+		map.put("gunika", 100);
+		map.put("raj", 84);
+		map.put("keshav", 90);
+		map.putIfAbsent("keshav", 89);
+		
+		map.forEach((k,v)-> System.out.println(k+" : "+ v));
+		
+		
+
+
+
+
+Overring the behaviour of sort logic
+===========================================
+
+	Map<String, Integer> map=new TreeMap<>(new Comparator<String>() {
+
+			@Override
+			public int compare(String o1, String o2) {
+				return o2.compareTo(o1);
+			}
+		});
+		
+		//or using lambda expression
+		
+		Map<String, Integer> map=new TreeMap<>(( o1,  o2)-> o2.compareTo(o1));
+		
+		map.put("ekta", 80);
+		map.put("gunika", 100);
+		map.put("raj", 84);
+		map.put("keshav", 90);
+		map.putIfAbsent("keshav", 89);
+		
+		map.forEach((k,v)-> System.out.println(k+" : "+ v));
+
+
+
+
+
 * Map: Internal , various type of map
+
+
+Queue: PriorityQueue vs BlockingQueue ( multithreading* using to solve producer consumer problem)
+=========================================================
+
+
+package com.day5.ex7.queue_examples;
+import java.util.*;
+public class A_DemoQueue {
+	
+	public static void main(String[] args) {
+		
+		//Default works as min heap
+		
+		PriorityQueue<Integer> queue=new PriorityQueue<>();
+		
+		//u can pass Comparator so that it can works as max heap
+		
+//		PriorityQueue<Integer> queue=new PriorityQueue<>(new Comparator<Integer>() {
+//			@Override
+//			public int compare(Integer o1, Integer o2) {
+//				return Integer.compare(o2, o1);
+//			}
+//		});
+		
+		//offer method is used to add data to the priorirty queue
+		//what is the diff bw queue.add(5550) and queue.offer(5550)
+		//Ans : in case of PriorityQueue no difference
+		//but in case of BlockingQueue there is a difference
+		
+		queue.offer(555);
+		queue.offer(-5);
+		queue.offer(5);
+		queue.offer(95);
+		
+		//poll() vs remove()
+		
+//		System.out.println(queue.remove());
+//		System.out.println(queue.remove());
+//		System.out.println(queue.remove());
+//		System.out.println(queue.remove());
+//		
+//		System.out.println(queue.remove());
+
+		
+		
+		//poll vs remove ? write it yourself
+		
+//		System.out.println(queue.poll());
+//		System.out.println(queue.poll());
+//		System.out.println(queue.poll());
+//		System.out.println(queue.poll());
+		//System.out.println(queue.poll());
+		
+	}
+
+}
+
+
+some special type of map:
+--------------------------
+
+		//IdentityHashMap take address of object in the consideration
+		
+//		Map<Integer, String> map=new IdentityHashMap<>();
+//
+//		Integer it1=new Integer(10);
+//		Integer it2=new Integer(10);
+//		
+//		map.put(it1, "ten");
+//		map.put(it2, "ten");
+//		
+//		System.out.println(map);
+		
+		
+		//Normal HashMap take equality of object in the consideration
+		
+		
+//		Map<Integer, String> map=new HashMap<>();
+//
+//		Integer it1=new Integer(10);
+//		Integer it2=new Integer(10);
+//		
+//		map.put(it1, "ten");
+//		map.put(it2, "ten");
+//		
+//		System.out.println(map);
+
+
+
+
+
+
+WeakHashMap*: cachig solutions
+===============
+
+	
+
+class MyKey{
+	private int k;
+
+	public int getK() {
+		return k;
+	}
+
+	public MyKey(int k) {
+		super();
+		this.k = k;
+	}
+
+	@Override
+	public String toString() {
+		return "MyKey [k=" + k + "]";
+	}
+	
+	
+
+	//GC is running as a demon thread, backgroud thread
+	//u are not suppose to do memory mgt
+	//u are not supposed to call gc in java
+	
+	//--------------------------------------------------------------------------
+	//u can do a poliate req to gc hey gc when this object become candidate of gc
+	//pls call finalize() just before that
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + k;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MyKey other = (MyKey) obj;
+		if (k != other.k)
+			return false;
+		return true;
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+		System.out.println("finalize method is called...");
+	}
+	
+	
+}
+public class F_WeakHashMap {
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		Map<MyKey, Integer> map=new WeakHashMap<>();
+		MyKey k1=new MyKey(80);
+		
+		map.put(k1, 80);
+		
+		k1=null;
+		System.gc();//req to gc to be called 
+		Thread.sleep(2000);// it halt current thread ( main ) for 2sec
+		
+		System.out.println(map);
+		
+		
+//		
+//		Map<MyKey, Integer> map=new HashMap<>();
+//		MyKey k1=new MyKey(80);
+//		
+//		map.put(k1, 80);
+//		
+//		k1=null;
+//		System.gc();//req to gc to be called 
+//		Thread.sleep(2000);// it halt current thread ( main ) for 2sec
+//		
+//		System.out.println(map);
+//		
+		
+	}
+
+}
+
+
+
 * generics
 * generic class and methods
 

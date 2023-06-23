@@ -16,3 +16,14 @@
 1687488271308	Rename type 'DemoQueue'
 1687495558943	Copy compilation unit
 1687497822862	Extract local variable 'entrySet'
+1687499132574	Copy compilation unit
+1687499275195	Copy compilation unit
+1687499290602	Rename type 'F_SortedSet'
+1687499577628	Rename package 'com.day7.session2.generics_example'
+1687499587362	Rename package 'com.day7.session2.map_examples'
+1687499595937	Rename package 'com.day7.session2.queue_examples'
+1687499627572	Rename package 'com.day5.generics_demo'
+1687499646482	Rename package 'com.day5.session2.map_examples'
+1687499662330	Rename package 'com.day5.session2.queue_examples'
+1687499678708	Rename package 'com.day5.session2.generics_example'
+1687499687890	Rename package 'com.day5.session2.creating_own_ds'

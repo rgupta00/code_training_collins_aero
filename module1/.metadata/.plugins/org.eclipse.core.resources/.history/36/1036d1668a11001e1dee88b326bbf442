@@ -1,0 +1,14 @@
+package com.day5.session2.queue_examples;
+import java.util.*;
+public class A_DemoQueue {
+	
+	public static void main(String[] args) {
+		
+//		queue.offer(555);
+//		queue.offer(-5);
+//		queue.offer(5);
+//		queue.offer(95);
+		
+	}
+
+}
