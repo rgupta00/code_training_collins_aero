@@ -1,0 +1,39 @@
+package com.day5.ex1.basics_collections;
+import java.util.*;
+public class A_HelloWorld {
+	
+	public static void main(String[] args) {
+		//What is collection:
+		//how to use ArrayList, LinkedList
+		//basics examples, sorting, searching printing
+		
+		List<String> list=new ArrayList<>();
+		list.add("foo");
+		list.add("bar");
+		list.add("jar");
+		
+		//System.out.println(list);
+		
+		//one by one: using enhance for loop
+		
+//		for(String data: list){
+//			System.out.println(data);
+//		}
+		
+		//using iterator (is a design pattern*)
+		//way to iterate (travese a collection)
+		Iterator<String> it=list.iterator();
+		while(it.hasNext()){
+			
+			System.out.println(it.next());
+		}
+		
+		//Sorting?
+		
+		
+		//binary search ?
+		
+		
+	}
+
+}

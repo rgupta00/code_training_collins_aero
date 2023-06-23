@@ -1,0 +1,10 @@
+package com.day5.ex1.basics_collections;
+
+public class EmployeeTester {
+	
+	public static void main(String[] args) {
+		EmployeeApp app=new EmployeeApp();
+		app.printAll();
+	}
+
+}

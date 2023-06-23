@@ -1,9 +1,0 @@
-package com.day5.map_demo;
-
-public class D_UsingTreeMap {
-	
-	public static void main(String[] args) {
-		
-	}
-
-}

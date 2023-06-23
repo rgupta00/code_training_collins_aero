@@ -1,0 +1,23 @@
+package com.day5.ex1.basics_collections;
+import java.util.*;
+public class A_HelloWorld {
+	
+	public static void main(String[] args) {
+		//What is collection:
+		//how to use ArrayList, LinkedList
+		//basics examples, sorting, searching printing
+		
+//		list.add("foo");
+//		list.add("bar");
+//		list.add("jar");
+		
+		
+		//Sorting?
+		
+		
+		//binary search ?
+		
+		
+	}
+
+}

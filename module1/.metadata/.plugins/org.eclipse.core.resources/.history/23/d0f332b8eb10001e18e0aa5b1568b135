@@ -1,0 +1,40 @@
+package com.day7.session2.collection_basics;
+import java.util.*;
+public class HelloWorld {
+	
+	public static void main(String[] args) {
+		//generics: java 5, java 7(diamond op)
+		//Vehical v=new Bike(); design as per interface
+		
+		List<String> list=new ArrayList<>();
+		
+		System.out.println(list.size());
+		list.add("foo");
+		list.add("bar");
+		list.add("jar");
+		System.out.println(list.get(1));
+		
+		
+		
+		
+		System.out.println(list);
+		System.out.println("-----using enhance for loop-----");
+		
+		for(String data: list) {
+			System.out.println(data);
+		}
+		
+		Collections.sort(list);
+		
+		System.out.println("-------sorted result--------");
+		for(String data: list) {
+			System.out.println(data);
+		}
+		
+		//binary search ?
+		
+		int index=Collections.binarySearch(list, "men");
+		System.out.println(index);
+	}
+
+}

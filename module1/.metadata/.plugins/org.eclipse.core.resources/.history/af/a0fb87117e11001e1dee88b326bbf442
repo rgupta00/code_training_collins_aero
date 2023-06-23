@@ -1,0 +1,16 @@
+package com.day5.ex1.basics_collections;
+import java.util.*;
+public class D_SortingUserDefineObject {
+
+	public static void main(String[] args) {
+		//Natural sort vs extra sort seq
+		//Comparable vs Comparator=> to sort user define data
+		
+		List<Employee>employees=new ArrayList<Employee>();
+		employees.add(new Employee(123,	"zen", "delhi", 45000.00));
+		employees.add(new Employee(13,	"ravi", "noida", 42000.00));
+		employees.add(new Employee(93,	"sumit", "banglore", 49000.00));
+		employees.add(new Employee(939,	"sumit", "chennai", 59000.00));
+		
+	}
+}

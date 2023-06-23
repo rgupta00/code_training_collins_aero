@@ -1,0 +1,9 @@
+package com.day5.ex4.map_example;
+
+public class A_UsingHashMap {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

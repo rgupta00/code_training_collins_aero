@@ -1,0 +1,10 @@
+package com.day5.ex0.object_class_java;
+
+public class B_EqualHashCode {
+
+	public static void main(String[] args) {
+		Employee employee1=new Employee(1, "raj", "noida",70000);
+		Employee employee2=new Employee(1, "raj", "noida",70000);
+		
+	}
+}
