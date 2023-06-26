@@ -1,0 +1,93 @@
+package com.day6.session1_generics;
+import java.util.*;
+
+import com.day6.session1_quick_recap.Employee;
+public class A_NeedOfGenerics {
+	
+	public static void main(String[] args) {
+		/*
+		 * provide type safty to ur code
+		 * generics is compile time safty net
+		 */
+//		List list=new LinkedList();
+//		list.add(12);
+//		list.add(55);
+//		list.add("bar"); //hetrogenious ds
+		
+//		int sum=0;
+//		
+//		for(Object o: list){
+//			sum+=(Integer)o;
+//		}
+//	
+//		System.out.println(sum);
+		
+		
+	
+		List<Integer> list=new LinkedList<>();
+		list.add(12);
+		list.add(102);
+		list.add(122);
+		list.add(912);
+		
+		printList(list);
+		
+
+		List<Double> list2=new LinkedList<>();
+		list2.add(12.00);
+		list2.add(102.7);
+		list2.add(122.8);
+		list2.add(912.3);
+		
+		printList(list2);
+		
+		
+		List<Employee>employees=new ArrayList<Employee>();
+		employees.add(new Employee(123,	"zen", "delhi", 45000.00));
+		employees.add(new Employee(13,	"sumit", "noida", 42000.00));
+		employees.add(new Employee(93,	"sumit", "banglore", 49000.00));
+		employees.add(new Employee(939,	"amit", "chennai", 59000.00));
+		
+		printList(employees);
+	}
+
+	//? extends xxx
+	//? super xxx
+	//it means that i saying to compiler that i can pass any list whose member are inherted from Number
+	// u can only print the collection but u can not change it
+	/*
+	 * 				Number
+	 * 	Double		Float			Integer
+	 */
+//	private static void printList(List<? extends Number > list) {
+//		//list.add(55.00); invalid operateion
+//		for(Number val: list){
+//			System.out.println(val);
+//		}
+//	}
+	
+	//it means that i saying to compiler that i can pass any list whose member are inherted 
+	//from Object (ie like mother class in java) ie means this method can print any kind of list
+		// u can only print the collection but u can not change it
+		
+//	private static void printList(List<? extends Object > list) {
+//		//list.add(55.00); invalid operateion
+//		for(Object val: list){
+//			System.out.println(val);
+//		}
+//	}
+	
+	private static void printList(List<?> list) {
+		//list.add(55.00); invalid operateion
+		for(Object val: list){
+			System.out.println(val);
+		}
+	}
+
+}
+
+
+
+
+
+

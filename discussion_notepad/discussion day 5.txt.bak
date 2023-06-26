@@ -838,6 +838,135 @@ public class A_DemoQueue {
 }
 
 
+some special type of map:
+--------------------------
+
+		//IdentityHashMap take address of object in the consideration
+		
+//		Map<Integer, String> map=new IdentityHashMap<>();
+//
+//		Integer it1=new Integer(10);
+//		Integer it2=new Integer(10);
+//		
+//		map.put(it1, "ten");
+//		map.put(it2, "ten");
+//		
+//		System.out.println(map);
+		
+		
+		//Normal HashMap take equality of object in the consideration
+		
+		
+//		Map<Integer, String> map=new HashMap<>();
+//
+//		Integer it1=new Integer(10);
+//		Integer it2=new Integer(10);
+//		
+//		map.put(it1, "ten");
+//		map.put(it2, "ten");
+//		
+//		System.out.println(map);
+
+
+
+
+
+
+WeakHashMap*: cachig solutions
+===============
+
+	
+
+class MyKey{
+	private int k;
+
+	public int getK() {
+		return k;
+	}
+
+	public MyKey(int k) {
+		super();
+		this.k = k;
+	}
+
+	@Override
+	public String toString() {
+		return "MyKey [k=" + k + "]";
+	}
+	
+	
+
+	//GC is running as a demon thread, backgroud thread
+	//u are not suppose to do memory mgt
+	//u are not supposed to call gc in java
+	
+	//--------------------------------------------------------------------------
+	//u can do a poliate req to gc hey gc when this object become candidate of gc
+	//pls call finalize() just before that
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + k;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MyKey other = (MyKey) obj;
+		if (k != other.k)
+			return false;
+		return true;
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+		System.out.println("finalize method is called...");
+	}
+	
+	
+}
+public class F_WeakHashMap {
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		Map<MyKey, Integer> map=new WeakHashMap<>();
+		MyKey k1=new MyKey(80);
+		
+		map.put(k1, 80);
+		
+		k1=null;
+		System.gc();//req to gc to be called 
+		Thread.sleep(2000);// it halt current thread ( main ) for 2sec
+		
+		System.out.println(map);
+		
+		
+//		
+//		Map<MyKey, Integer> map=new HashMap<>();
+//		MyKey k1=new MyKey(80);
+//		
+//		map.put(k1, 80);
+//		
+//		k1=null;
+//		System.gc();//req to gc to be called 
+//		Thread.sleep(2000);// it halt current thread ( main ) for 2sec
+//		
+//		System.out.println(map);
+//		
+		
+	}
+
+}
+
 
 
 * generics

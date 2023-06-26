@@ -1,0 +1,24 @@
+package com.day6.session1_generics;
+
+class Box{
+	private int data;
+
+	public int getData() {
+		return data;
+	}
+
+	public void setData(int data) {
+		this.data = data;
+	}
+	
+	
+}
+public class C_TemplateClassInJava {
+	
+	public static void main(String[] args) {
+		Box b=new Box();
+		b.setData(33);
+		System.out.println(b.getData());
+	}
+
+}

@@ -1,0 +1,32 @@
+package com.day6.session1_generics;
+import java.util.*;
+public class A_NeedOfGenerics {
+	
+	public static void main(String[] args) {
+		/*
+		 * provide type safty to ur code
+		 * generics is compile time safty net
+		 */
+		List list=new LinkedList();
+		list.add(12);
+		list.add(55);
+		list.add("bar"); //hetrogenious ds
+		
+		int sum=0;
+		
+		for(Object o: list){
+			sum+=(Integer)o;
+		}
+	
+		System.out.println(sum);
+		
+		
+		
+//		List<Integer> list=new LinkedList<>();
+//		list.add(12);
+//		list.add("bar");
+//		list.add("jar");
+//		list.add("foo");
+	}
+
+}

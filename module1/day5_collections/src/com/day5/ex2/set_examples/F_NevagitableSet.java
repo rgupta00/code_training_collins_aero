@@ -4,7 +4,7 @@ import java.util.TreeSet;
 public class F_NevagitableSet {
 
 	public static void main(String[] args) {
-		
+	
 		NavigableSet<Integer> set=new TreeSet<>();
 		set.add(100);
 		set.add(101);

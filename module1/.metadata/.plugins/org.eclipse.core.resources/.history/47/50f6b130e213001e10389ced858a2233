@@ -1,0 +1,31 @@
+package com.day6.session1_generics;
+
+//generic method
+public class D_GenericMethod {
+	
+	public static void main(String[] args) {
+		
+//		Integer a=3;
+//		Integer b=2;
+//		Integer c=41;
+//		
+//		Integer max=maxData(a, b , c);
+//		System.out.println(max);
+		
+		Double a=3.0;
+		Double b=2.6;
+		Double c=41.4;
+		
+		Double max=maxData(a, b , c);
+		System.out.println(max);
+	}
+	private static  T  <T extends Comparable<T>  maxData(T a, T b, T c) {
+		T max=a;
+		if(b>max)
+			max=b;
+		if(c>max)
+			max=c;
+		return max;
+	}
+
+}

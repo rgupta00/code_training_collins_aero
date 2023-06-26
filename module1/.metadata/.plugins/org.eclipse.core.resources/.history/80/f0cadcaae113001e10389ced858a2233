@@ -1,0 +1,17 @@
+package com.day6.session1_generics;
+
+//generic method
+public class D_GenericMethod {
+	
+	public static void main(String[] args) {
+		
+		Integer a=3;
+		Integer b=2;
+		Integer c=-1;
+		
+		Integer max=maxData(a, b , c);
+		
+		
+	}
+
+}

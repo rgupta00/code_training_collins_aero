@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="day_1.objectorientation.Passanger"/>
 <fullyQualifiedTypeName name="day_1.objectorientation.Metro"/>
 <fullyQualifiedTypeName name="day_1.objectorientation.Vehicle"/>
@@ -18,11 +17,47 @@
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="com.day2.ex3.KrishnaDairy"/>
 <fullyQualifiedTypeName name="com.day2.ex3.KrishnaDairyImproved"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="com.day2.ex3.Shape"/>
 <fullyQualifiedTypeName name="com.day2.ex3.Circle"/>
 <fullyQualifiedTypeName name="com.day2.ex3.Square"/>
 <fullyQualifiedTypeName name="com.day2.ex3.Triangle"/>
 <fullyQualifiedTypeName name="com.day5.ex0.object_class_java.Employee"/>
+<fullyQualifiedTypeName name="com.day6.session1_quick_recap.Shape"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.day6.session1_quick_recap.Circle"/>
+<fullyQualifiedTypeName name="com.day6.session1_quick_recap.Triangle"/>
+<fullyQualifiedTypeName name="com.day6.session1_quick_recap.Square"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.FileReader"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="com.day6.session1_quick_recap.Account"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="com.day6.session1_quick_recap.AccountCreationException"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="java.util.ListIterator"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.LinkedHashMap"/>
+<fullyQualifiedTypeName name="java.util.Map.Entry"/>
+<fullyQualifiedTypeName name="java.lang.Number"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.day6.session1_generics.CostlyDog"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="com.day6.session1_generics.Cat"/>
+<fullyQualifiedTypeName name="com.day6.session1_generics.Animal"/>
+<fullyQualifiedTypeName name="com.day6.session1_generics.Dog"/>
+<fullyQualifiedTypeName name="com.day6.session1_generics.Box"/>
+<fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+<fullyQualifiedTypeName name="com.day6.session1_generics.StackFullEx"/>
+<fullyQualifiedTypeName name="com.day6.session1_generics.Stack"/>
+<fullyQualifiedTypeName name="java.lang.Class"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.lang.Comparable"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="com.day6.session1_quick_recap.Employee"/>
 </qualifiedTypeNameHistroy>

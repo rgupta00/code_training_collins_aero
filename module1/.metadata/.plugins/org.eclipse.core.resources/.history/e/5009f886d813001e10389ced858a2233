@@ -1,0 +1,9 @@
+package com.day6.session1_generics;
+import java.util.*;
+public class A_NeedOfGenerics {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

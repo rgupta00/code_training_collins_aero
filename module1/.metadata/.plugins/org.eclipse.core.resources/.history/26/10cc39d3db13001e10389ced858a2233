@@ -1,0 +1,46 @@
+package com.day6.session1_generics;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Animal {
+}
+
+class Dog extends Animal {
+}
+
+class CostlyDog extends Dog {
+}
+
+class Cat extends Animal {
+}
+
+public class B_DemoSuper {
+	public static void main(String[] args) {
+
+		List<Dog> dogs = new ArrayList<Dog>();
+		dogs.add(new Dog());
+		dogs.add(new CostlyDog());
+
+		// dogs.add(new Animal());
+
+		// dogs.add(new Cat());
+		myMethod(dogs);
+	}
+
+	// hey java i can pass list of dog and any type of dog is allowed to be
+	// added
+	// i can modify the list but dont print it
+	// private static void myMethod(List<? super Dog> dogs) {
+	//
+	// dogs.add(new CostlyDog());
+	//
+	// }
+
+	private static void myMethod(List<? super Object> dogs) {
+
+		dogs.add(new Cat());
+
+	}
+
+}

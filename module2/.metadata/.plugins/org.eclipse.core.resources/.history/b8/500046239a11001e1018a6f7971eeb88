@@ -1,0 +1,8 @@
+package com.day6.session1.threads.revision;
+
+public class Snippet {
+	public static void main(String[] args) {
+		A_DemoThread1_Using_Runnable
+	}
+}
+

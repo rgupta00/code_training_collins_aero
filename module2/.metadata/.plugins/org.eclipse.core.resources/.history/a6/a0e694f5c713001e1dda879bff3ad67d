@@ -1,0 +1,46 @@
+package com.day6.threads.a.basics;
+
+public class DemoDeadLock {
+
+	public static void main(String[] args) {
+		final String r1 = "resource1";
+		final String r2 = "resource2";
+
+		Thread thread1 = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				synchronized (r1) {
+					System.out.println("thrad1 get lock on r1");
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+					}
+					synchronized (r2) {
+						System.out.println("thrad1 get lock on r2");
+					}
+				}
+			}
+		});
+
+		Thread thread2 = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				synchronized (r1) {
+					System.out.println("thrad2 get lock on r1");
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+					}
+					synchronized (r2) {
+						System.out.println("thrad2 get lock on r2");
+					}
+				}
+			}
+		});
+
+		thread1.start();
+		thread2.start();
+	}
+
+}
