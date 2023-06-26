@@ -1,0 +1,17 @@
+package com.day6.session1.annotation;
+
+@interface MyAnno{
+	public String hello() default "hello all champs";
+}
+class Foof{
+	public void foof(){
+		System.out.println("hello to food method");
+	}
+}
+public class B_CustomAnnotation {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

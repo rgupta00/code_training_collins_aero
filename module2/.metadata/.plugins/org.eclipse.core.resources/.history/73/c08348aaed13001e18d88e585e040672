@@ -1,0 +1,47 @@
+package com.day6.session1.reflection;
+
+interface Payable{
+	public void pay();
+}
+class Emp implements Payable{
+	private int id;
+	private String name;
+	@Override
+	public void pay() {
+		System.out.println("pay is proivded...");
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Emp(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	
+	
+	
+}
+public class A_HelloReflection {
+
+	public static void main(String[] args) {
+		//static class loading
+		//Emp e=new Emp(1, "raj");
+	}
+}
+
+
+
+
+
+
+

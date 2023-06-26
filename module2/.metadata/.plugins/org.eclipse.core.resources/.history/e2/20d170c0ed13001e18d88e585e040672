@@ -1,0 +1,61 @@
+package com.day6.session1.reflection;
+
+import java.lang.reflect.Method;
+
+interface Payable{
+	public void pay();
+}
+class Emp implements Payable{
+	private int id;
+	private String name;
+	@Override
+	public void pay() {
+		System.out.println("pay is proivded...");
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Emp(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	
+	
+	
+}
+public class A_HelloReflection {
+
+	public static void main(String[] args) throws ClassNotFoundException {
+		
+		//static class loading
+		//Emp e=new Emp(1, "raj");
+		
+		//dynamic class loading in java (imp) all the framework use this conept to run ur code
+		
+		Class<?> clazz=Class.forName("com.day6.session1.reflection.Emp");
+		//this can give me all the meta data about the class
+		
+		Method[]methods=clazz.getMethods();
+		for(Method m: methods){
+			System.out.println(m.getName()+" : "+ m.getModifiers()+" : "+ m.getParameterCount());
+		}
+		
+	}
+}
+
+
+
+
+
+
+

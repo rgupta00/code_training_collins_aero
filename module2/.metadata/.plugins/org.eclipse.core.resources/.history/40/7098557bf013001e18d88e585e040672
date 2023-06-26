@@ -1,0 +1,30 @@
+package com.day6.session1.reflection;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+class CallMe{
+	private String welcome(String name){
+		return "welcome "+ name;
+	}
+}
+public class CallingAMethodUsingJavaRef {
+	
+	public static void main(String[] args) throws ClassNotFoundException, 
+	NoSuchMethodException, SecurityException, 
+	InstantiationException, IllegalAccessException, 
+	IllegalArgumentException, InvocationTargetException {
+		
+		Class<?> clazz=Class.forName("com.day6.session1.reflection.CallMe");
+		
+		Method method=clazz.getMethod("welcome", String.class);
+		method.setAccessible(true);
+		CallMe ob=(CallMe) clazz.newInstance();
+		
+		String op= (String) method.invoke(ob, "raj");
+		System.out.println(op);
+		
+	}
+
+}
+
