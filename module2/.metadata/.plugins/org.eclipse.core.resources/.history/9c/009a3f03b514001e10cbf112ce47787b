@@ -6,9 +6,9 @@ package com.day6.threads.b.syn_threaads;
 class Q{
 	int n;
 	boolean valueSet=false;
-	//consumer t
-	synchronized int get() {
-		while(!valueSet) {
+	//consumer
+	 int get() {
+		if(!valueSet) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -20,9 +20,9 @@ class Q{
 		notify();
 		return n;
 	}
-	//producer t2
+	//producer
 	synchronized void put(int n) {
-		while(valueSet) {
+		if(valueSet) {
 			try {
 				wait();
 			} catch (InterruptedException e) {

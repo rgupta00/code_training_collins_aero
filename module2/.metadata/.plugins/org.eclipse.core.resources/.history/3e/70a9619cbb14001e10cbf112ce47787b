@@ -25,19 +25,13 @@ class MyJob implements Runnable {
 }
 
 class MyExHandler implements UncaughtExceptionHandler {
+
 	@Override
 	public void uncaughtException(Thread t, Throwable e) {
 		System.out.println("exception is handled :" + e.getCause());
 	}
-}
 
-class CommonExHandler implements UncaughtExceptionHandler {
-	@Override
-	public void uncaughtException(Thread t, Throwable e) {
-		System.out.println("common exception is handled :" + e.getCause());
-	}
 }
-
 
 public class C_ProblemWithRunnable_HandlingEx {
 
@@ -45,11 +39,10 @@ public class C_ProblemWithRunnable_HandlingEx {
 		// U need to create exception handler in java to handle ex from a
 		// threads
 
-		Thread.setDefaultUncaughtExceptionHandler(new CommonExHandler());
 		MyJob job = new MyJob();
 
 		Thread thread = new Thread(job);
-		//thread.setUncaughtExceptionHandler(new MyExHandler());
+		thread.setUncaughtExceptionHandler(new MyExHandler());
 		thread.start();
 
 	}

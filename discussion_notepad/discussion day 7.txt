@@ -503,3 +503,232 @@ volatile: visiblity problem
 synchronized: thread safty as well as visiblity problem
 
 
+Code is pushed to git repo
+
+we will discuss doubts after break
+
+I have a doubt as I already asked you, 
+if we try to print something inside the while loop without
+ using volatile keyword then during that time the test thread will
+ read the value from the local cache and it 
+ shouldn't print the thread terminated statement correct? 
+ but why it's printing that statement
+
+I'm bit confused here, 
+I understood the concept but this one I confused, please do clarify this to me if possible
+
+
+
+Dead lock threads :
+---------------------------
+
+
+public class E_DemoDeadLock {
+
+	public static void main(String[] args) {
+
+		final String r1 = "r1";
+		final String r2 = "r2";
+
+		Thread t1 = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				synchronized (r1) {
+					System.out.println("t1 get lock on r1");
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+					}
+
+					synchronized (r2) {
+						System.out.println("t1 get lock on r2");
+					}
+				}
+			}
+		});
+
+		Thread t2 = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				synchronized (r1) {
+					System.out.println("t2 get lock on r1");
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+					}
+
+					synchronized (r2) {
+						System.out.println("t2 get lock on r2");
+					}
+				}
+			}
+		});
+		
+		t1.start();
+		t2.start();
+		
+		System.out.println("----------------------");
+
+	}
+
+}
+
+
+
+History of java concurrency*
+---------------------------------
+
+ java 1.4: classical concurrency
+ java 1.5 or java 5: juc
+ java 7: fork and join framework
+ java 8: declartive data processing using stream, u also have || strams
+ 
+ ...
+ ....
+ 
+ 
+ java 21: virtual threads
+ 
+ lots of improvement is happening in java
+ 
+ 
+BlockingQueue: can be used to imp P and C problem
+===================================================
+
+public class C_PCUsingBLQ {
+
+	static BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(1);
+
+	public static void main(String[] args) {
+
+		Thread t1 = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					produce();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
+		Thread t2 = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					consume();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		t1.start();
+		t2.start();
+
+	}
+
+	static void consume() throws InterruptedException {
+		while (true) {
+			Thread.sleep(1000);
+			Integer value = queue.take();
+			System.out.println("taken: " + value + " size : " + queue.size());
+		}
+	}
+
+	static void produce() throws InterruptedException {
+		Random r = new Random();
+		while (true) {
+			int data=r.nextInt(10);
+			System.out.println("put : "+ data);
+			queue.put(data);
+		}
+	}
+
+}
+
+
+What is the problem with Runnable?
+=================================
+run() dont return anything
+it can not throw ex, ex handling in a thread become more compileated in Runnable
+
+
+
+
+
+
+Q: How to handle a excetion that is thrown from run() method
+---------------------------------------------------------------
+1. run can not throw the checked ex
+	TRICK: u need to wrap ur ex to runtime ex and throw it (Ex wrapping and rethrowing)
+	
+
+//run: it can not return the processing result
+//run method can not throw the exception
+
+class MyJob implements Runnable {
+
+	@Override
+	public void run() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("foo.txt"));
+			//
+			System.out.println("file is found");
+		} catch (FileNotFoundException ex) {
+			System.out.println("file is not found");
+			throw new RuntimeException(ex);
+		}
+	}
+}
+
+class MyExHandler implements UncaughtExceptionHandler {
+	@Override
+	public void uncaughtException(Thread t, Throwable e) {
+		System.out.println("exception is handled :" + e.getCause());
+	}
+}
+
+class CommonExHandler implements UncaughtExceptionHandler {
+	@Override
+	public void uncaughtException(Thread t, Throwable e) {
+		System.out.println("common exception is handled :" + e.getCause());
+	}
+}
+
+
+public class C_ProblemWithRunnable_HandlingEx {
+
+	public static void main(String[] args) {
+		// U need to create exception handler in java to handle ex from a
+		// threads
+
+		Thread.setDefaultUncaughtExceptionHandler(new CommonExHandler());
+		MyJob job = new MyJob();
+
+		Thread thread = new Thread(job);
+		//thread.setUncaughtExceptionHandler(new MyExHandler());
+		thread.start();
+
+	}
+
+}
+
+
+
+Q2. How to return processing result from run()
+----------------------------------------------
+
+
+core java
+abs class vs interface
+ex handling
+java collection
+java threads
+
+java 8 streams
+java design patterns
+network proramming in java : socket , rmi
+JNI basics
