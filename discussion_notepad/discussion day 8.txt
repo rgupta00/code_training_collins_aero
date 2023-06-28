@@ -443,5 +443,41 @@ public class ScheduledExecutorServiceExample {
 	
 	
 	
+SOLID and GOF patterns
+=======================
+
+MVC: SRP
+there should be not more then one reasion to change ur code
+
+M		V		C
+model 		view 		controller
+
+BL		display		manage the flow
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
