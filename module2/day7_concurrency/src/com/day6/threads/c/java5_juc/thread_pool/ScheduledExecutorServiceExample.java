@@ -34,12 +34,14 @@ public class ScheduledExecutorServiceExample {
 				+ LocalDateTime.now().toString());
 
 		Task task = new Task("App-Task");
-		ScheduledFuture<?> result = executor.schedule(task, 10,
-				TimeUnit.SECONDS);
+//		ScheduledFuture<?> result = executor.schedule(task, 10,
+//				TimeUnit.SECONDS);
+		
+		//executor.scheduleWithFixedDelay(task, 1, 2, TimeUnit.SECONDS);
 
 		System.out.println("Shutdown and await requested at : "
 				+ LocalDateTime.now().toString());
-		shutdownAndAwaitTermination(executor);
+		//shutdownAndAwaitTermination(executor);
 	}
 
 	static void shutdownAndAwaitTermination(ExecutorService executorService) {

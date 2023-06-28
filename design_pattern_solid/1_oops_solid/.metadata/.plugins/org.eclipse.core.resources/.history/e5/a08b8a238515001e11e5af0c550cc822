@@ -1,0 +1,30 @@
+package com.demo.ex1;
+//
+class FallIllEx extends RuntimeException{
+	
+}
+class DaudIbrahim{
+	
+	public void shootAnyBody(){
+		System.out.println("i just kill for fun ...");
+	}
+	
+	public void briveToHigherAuthority(){
+		System.out.println("brive To Higher Authority..");
+	}
+}
+class DaudIbrahimSon extends DaudIbrahim{
+	public void shootAnyBody(){
+		throw new FallIllEx();
+	}
+}
+
+public class A_NeedOfLSP {
+	
+	public static void main(String[] args) {
+		DaudIbrahimSon daudIbrahimSon=new DaudIbrahimSon();
+		daudIbrahimSon.shootAnyBody();
+		
+	}
+
+}

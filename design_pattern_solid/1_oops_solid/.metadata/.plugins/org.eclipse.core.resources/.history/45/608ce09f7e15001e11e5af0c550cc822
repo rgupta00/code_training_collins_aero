@@ -1,0 +1,10 @@
+package com.productapp.dao;
+
+public class ProductDaoImplJdbc implements ProductDao{
+
+	@Override
+	public void addProduct() {
+		
+	}
+
+}

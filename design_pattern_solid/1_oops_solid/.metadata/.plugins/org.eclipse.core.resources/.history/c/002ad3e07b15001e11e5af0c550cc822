@@ -1,0 +1,20 @@
+package com.a.basics_oo.c;
+
+public class DemoMain {
+
+	public static void main(String[] args) {
+		
+		RaviStack stack=new RaviStack();
+		
+		someInternalLogic(stack);
+	}
+	
+	public static void someInternalLogic(RaviStack stack) {
+		
+		
+		///
+		
+		
+	}
+
+}

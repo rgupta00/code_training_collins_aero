@@ -237,3 +237,8 @@ Java Model Exception: Java Model Status [Unknown javadoc format for synth [in sy
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
 !SUBENTRY 1 org.eclipse.jdt.core 4 1009 2023-06-28 09:53:43.367
 !MESSAGE Unknown javadoc format for synth [in synth.class [in com.sun.swing.internal.plaf.synth.resources [in /usr/lib/java/jdk1.8.0_111/jre/lib/rt.jar]]]
+
+!ENTRY org.eclipse.core.resources 2 2 2023-06-28 11:37:05.104
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2023-06-28 11:37:05.104
+!MESSAGE The project description file (.project) for 'day7_dp' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.

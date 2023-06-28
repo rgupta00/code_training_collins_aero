@@ -1,0 +1,7 @@
+package com.demo.ex2.sol;
+
+public class RectangleShape {
+	public void drawRectangle() {
+		System.out.println("drawing rectangle");
+	}
+}

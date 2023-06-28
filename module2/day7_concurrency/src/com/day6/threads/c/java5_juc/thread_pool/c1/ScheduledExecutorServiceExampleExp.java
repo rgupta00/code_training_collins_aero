@@ -30,11 +30,11 @@ public class ScheduledExecutorServiceExampleExp {
 				+ LocalDateTime.now().toString());
 
 		Task task = new Task();
-		ScheduledFuture<?> result = executor.scheduleWithFixedDelay(task, 0, 1, TimeUnit.SECONDS);
+		executor.scheduleWithFixedDelay(task, 0, 1, TimeUnit.SECONDS);
 
 		System.out.println("Shutdown and await requested at : "
 				+ LocalDateTime.now().toString());
-		shutdownAndAwaitTermination(executor);
+		//shutdownAndAwaitTermination(executor);
 	}
 
 	static void shutdownAndAwaitTermination(ExecutorService executorService) {

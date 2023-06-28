@@ -1,0 +1,30 @@
+package com.demo;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Properties;
+
+//GOD class--- 
+class Product {
+	
+
+	public boolean valiation() {
+		return true;
+	}
+
+	
+	public Connection getConnection() {
+		
+	}
+
+
+	public void addProduct() throws SQLException {
+		
+	}
+
+}

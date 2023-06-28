@@ -4,20 +4,15 @@ public class DemoMain {
 
 	public static void main(String[] args) {
 		
-		AmitStack stack=new AmitStack();
+		Stack stack=new StackImpArray();
 		
 		someInternalLogic(stack);
 	}
 	
-	public static void someInternalLogic(AmitStack stack) {
+	public static void someInternalLogic(Stack stack) {
+		stack.push(33);
 		
-		stack.amitPush(44);
-		stack.amitPush(404);
-	
-		
-		System.out.println(stack.raviPop());
-		System.out.println(stack.raviPop());
-
+		///
 		
 		
 	}

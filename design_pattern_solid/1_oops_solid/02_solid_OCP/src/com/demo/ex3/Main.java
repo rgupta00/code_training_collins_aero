@@ -1,0 +1,15 @@
+package com.demo.ex3;
+import java.util.*;
+public class Main {
+
+	public static void main(String[] args) {
+		List<Book> books=Arrays.asList(
+				new Book("1212", "java effective", "foo", 400),
+				new Book("129", "power of subconsious mind", "foo", 600)
+				);
+
+		List<Book> selectedBooksAllJava=BookService.getAllBooksThatAreCostly(books);
+		
+		selectedBooksAllJava.forEach(b-> System.out.println(b));
+	}
+}

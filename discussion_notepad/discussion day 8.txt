@@ -41,19 +41,403 @@ Histry of all progress done in field of threads:
 5. java : virtual thread they are more light wt as compared to classical thread
 
 
+
+Deadlock example:
+===================
+
+public class E_DemoDeadLock {
+
+	public static void main(String[] args) {
+
+		final String r1 = "r1";
+		final String r2 = "r2";
+
+		Thread t1 = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				synchronized (r1) {
+					System.out.println("t1 get lock on r1");
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+					}
+
+					synchronized (r2) {
+						System.out.println("t1 get lock on r2");
+					}
+				}
+			}
+		});
+
+		Thread t2 = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				synchronized (r1) {
+					System.out.println("t2 get lock on r1");
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+					}
+
+					synchronized (r2) {
+						System.out.println("t2 get lock on r2");
+					}
+				}
+			}
+		});
+		
+		t1.start();
+		t2.start();
+		
+		System.out.println("----------------------");
+
+	}
+
+}
+
+
+
+
+
+//What is volatile key word does?
+===================================
+
+class Test extends Thread {
+
+   volatile boolean keepRunning = true;
+
+    public void run() {
+    	
+        while (keepRunning) {
+        }
+        
+        System.out.println("Thread terminated.");
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+    	//2 threads : main and other is t
+    	
+    	System.out.println(Runtime.getRuntime().availableProcessors());
+        Test t = new Test();
+        t.start();
+        Thread.sleep(1000);
+        t.keepRunning = false;
+        System.out.println("keepRunning set to false.");
+    }
+}
 	
 	
+Problem with java 5 Runnable interface:
+====================================
+
+
+
+//run: it can not return the processing result
+//run method can not throw the exception
+
+class MyJob implements Runnable {
+
+	@Override
+	public void run() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("foo.txt"));
+			//
+			System.out.println("file is found");
+		} catch (FileNotFoundException ex) {
+			System.out.println("file is not found");
+			throw new RuntimeException(ex);
+		}
+	}
+}
+
+class MyExHandler implements UncaughtExceptionHandler {
+	@Override
+	public void uncaughtException(Thread t, Throwable e) {
+		System.out.println("exception is handled :" + e.getCause());
+	}
+}
+
+class CommonExHandler implements UncaughtExceptionHandler {
+	@Override
+	public void uncaughtException(Thread t, Throwable e) {
+		System.out.println("common exception is handled :" + e.getCause());
+	}
+}
+
+
+public class C_ProblemWithRunnable_HandlingEx {
+
+	public static void main(String[] args) {
+		// U need to create exception handler in java to handle ex from a
+		// threads
+
+		Thread.setDefaultUncaughtExceptionHandler(new CommonExHandler());
+		MyJob job = new MyJob();
+
+		Thread thread = new Thread(job);
+		//thread.setUncaughtExceptionHandler(new MyExHandler());
+		thread.start();
+
+	}
+
+}
+
+
+
+class Cal implements Runnable {
+	private int x, y, sum;
+	
+	private  volatile boolean isDone=false;
+	
+
+	public Cal(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	@Override
+	public void run() {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+		}
+
+		sum = x + y;
+		isDone=true;
+		synchronized (this) {
+			notifyAll();
+		}
+	
+	}
+
+	public synchronized int getSum() {
+		if(!isDone){
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		return sum;
+	}
+}
+
+public class D_ProblemWithRunnableRetuingValue {
+
+	public static void main(String[] args) throws InterruptedException {
+		Cal cal = new Cal(2, 4);
+		Thread thread = new Thread(cal);
+		thread.start();
+		//thread.join();
+		System.out.println(cal.getSum());
+	}
+
+}
+
+
+class ScheduledProcessJob implements Runnable {
+
+	@Override
+	public void run() {
+		System.out.println("IO bound process...."
+				+ Thread.currentThread().getName()+": "+LocalDateTime.now());
+	}
+
+}
+public class F_ScheduleProcessTP {
+	public static void main(String[] args) {
+		ScheduledExecutorService executorService=Executors.newScheduledThreadPool(16);
+//		executorService.schedule(new ScheduledProcessJob(), 4, TimeUnit.SECONDS);
+//		executorService.shutdown();
+		
+		executorService.scheduleWithFixedDelay(new ScheduledProcessJob(), 1, 2, TimeUnit.SECONDS);
+	//	  System.out.println(schedule.get());
+		
+		executorService.shutdown();
+//		
+	}
+
+}
+
+
+
+
+class FactorialCal implements Callable<Long> {
+	private long n;
+
+	public FactorialCal(long n) {
+		this.n = n;
+	}
+
+	@Override
+	public Long call() throws Exception {
+		if (n <= 0)
+			throw new Exception();
+		
+		try{
+			Thread.sleep(1000);
+		}catch(InterruptedException e){}
+		
+		long fact = 1;
+		for (long i = 1; i <= n; i++) {
+			fact *= i;
+		}
+		return fact;
+	}
+
+}
+
+public class G_AppOfTP {
+
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
+
+		Callable<Long> callable=new FactorialCal(10);
+		ExecutorService executorService=Executors.newSingleThreadExecutor();
+		
+		Future<Long> future= executorService.submit(callable);
+		executorService.shutdown();
+		
+	
+		System.out.println("---not blocking code----");
+		
+		System.out.println(future.get());
+		
+		
+		System.out.println("---done ----");
+		
+		
+		
+	}
+
+}
+
+
+
+
+
+
+
 	
 	
+Thread pool in java:
+--------------------
+
+
+
+
+
+class CpuBoundProcessJob implements Runnable{
+
+	@Override
+	public void run() {
+		System.out.println("cpu bound process...."+ Thread.currentThread().getName());
+	}
+	
+}
+public class A_DemoTP_CPU_BoundProcess {
+	public static void main(String[] args) {
+		int noOfCores=Runtime.getRuntime().availableProcessors();
+		
+		ExecutorService executorService=Executors.newFixedThreadPool(noOfCores);
+		
+		for(int i=0;i<100;i++){
+			executorService.execute(new CpuBoundProcessJob());
+		}
+		
+		executorService.shutdown();
+		
+	}
+}
+
+
+
+
+
+
+
+class IOBoundProcessJob implements Runnable {
+
+	@Override
+	public void run() {
+		System.out.println("IO bound process...."
+				+ Thread.currentThread().getName());
+	}
+
+}
+
+public class B_DemoTP_IO_BoundProcess {
+	public static void main(String[] args) {
+		ExecutorService executorService = Executors.newCachedThreadPool();
+		
+
+		for (int i = 0; i < 100; i++) {
+			executorService.execute(new CpuBoundProcessJob());
+		}
+
+		executorService.shutdown();
+
+	}
+}
+
+
+
 	
 	
-	
-	
-	
-	
-	
-	
-	
+class Task implements Callable<String> {
+	private final String name;
+
+	public Task(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String call() throws Exception {
+		return "Task [" + name + "] executed on : "
+				+ LocalDateTime.now().toString();
+	}
+}
+
+
+
+
+
+
+ScheduledExecutorService Example:
+----------------------------------
+
+public class ScheduledExecutorServiceExample {
+
+	public static void main(String[] args) throws InterruptedException,
+			ExecutionException {
+
+		ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+
+		System.out.println("Task scheduled to execute after 10 seconds at : "
+				+ LocalDateTime.now().toString());
+
+		Task task = new Task("App-Task");
+		ScheduledFuture<?> result = executor.schedule(task, 10,
+				TimeUnit.SECONDS);
+
+		System.out.println("Shutdown and await requested at : "
+				+ LocalDateTime.now().toString());
+		shutdownAndAwaitTermination(executor);
+	}
+
+	static void shutdownAndAwaitTermination(ExecutorService executorService) {
+		executorService.shutdown();
+		try {
+			if (!executorService.awaitTermination(1, TimeUnit.HOURS)) {
+				executorService.shutdownNow();
+			}
+		} catch (InterruptedException ie) {
+			executorService.shutdownNow();
+			Thread.currentThread().interrupt();
+		}
+	}
+}
 	
 	
 	

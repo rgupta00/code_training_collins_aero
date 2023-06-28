@@ -1,0 +1,20 @@
+package com.a.basics_oo.c;
+
+public class DemoMain {
+
+	public static void main(String[] args) {
+		
+		StackImpLL stack=new StackImpLL();
+		
+		someInternalLogic(stack);
+	}
+	
+	public static void someInternalLogic(StackImpLL stack) {
+		
+		
+		///
+		
+		
+	}
+
+}
