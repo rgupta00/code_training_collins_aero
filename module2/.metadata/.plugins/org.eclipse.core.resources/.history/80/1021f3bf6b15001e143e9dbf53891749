@@ -1,0 +1,25 @@
+package com.day6.threads.c.java5_juc.threadsafe_collection;
+
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+
+import com.sun.javafx.collections.MappingChange.Map;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
+
+public class B_ConcurrentHashMapAndCOWAL {
+	
+	public static void main(String[] args) {
+		//ConcurrentHashMap vs HashMap
+		
+		Map<String, Integer> m=new HashMap<>();
+		
+		HashMap<String, Integer> map=Collections.synchronizedMap(new );
+		
+				
+		ConcurrentHashMap<String, Integer> map=new ConcurrentHashMap<>();
+		
+		
+		
+	}
+
+}

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<section name="WORKBENCH_SETTINGS">
-		<list key="ENABLED_TRANSFERS">
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/home/raj/Desktop/code_training_collins_aero/module2/day7_dp"/>
+			<item value="/home/raj/Desktop/code_training_collins_aero/module2/day7_concurrency"/>
+			<item value="/home/raj/Desktop/code_training_collins_aero/module2/day6_reflection_anno_java8"/>
 		</list>
-	</section>
-	<section name="ChooseWorkspaceDialogSettings">
-		<item value="619" key="DIALOG_X_ORIGIN"/>
-		<item value="274" key="DIALOG_Y_ORIGIN"/>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
 	</section>
 </section>

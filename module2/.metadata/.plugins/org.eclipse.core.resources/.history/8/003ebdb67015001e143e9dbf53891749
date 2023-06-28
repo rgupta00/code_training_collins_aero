@@ -1,0 +1,93 @@
+package com.day6.threads.c.java5_juc.thread_pool;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+//Runnale vs Callable
+
+//class MyJob implements Runnable{
+//
+//	@Override
+//	public void run() {
+//		
+//	}
+//	
+//}
+
+class FactorialCal implements Callable<Long> {
+	private long n;
+
+	public FactorialCal(long n) {
+		this.n = n;
+	}
+
+	@Override
+	public Long call() throws Exception {
+		if (n <= 0)
+			throw new Exception();
+		
+		try{
+			Thread.sleep(1000);
+		}catch(InterruptedException e){}
+		
+		long fact = 1;
+		for (long i = 1; i <= n; i++) {
+			fact *= i;
+		}
+		return fact;
+	}
+
+}
+
+public class G_AppOfTP {
+
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
+
+		Callable<Long> callable=new FactorialCal(10);
+		ExecutorService executorService=Executors.newSingleThreadExecutor();
+		
+		Future<Long> future= executorService.submit(callable);
+		executorService.shutdown();
+		
+		System.out.println("---not blocking code----");
+		
+		System.out.println(future.get());
+		
+		System.out.println("---done ----");
+		
+		
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

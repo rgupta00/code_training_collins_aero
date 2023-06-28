@@ -1,0 +1,19 @@
+package com.day6.threads.c.java5_juc.thread_pool;
+
+import java.time.LocalDateTime;
+
+class ScheduledProcessJob implements Runnable {
+
+	@Override
+	public void run() {
+		System.out.println("IO bound process...."
+				+ Thread.currentThread().getName()+": "+LocalDateTime.now());
+	}
+
+}
+public class F_ScheduleProcessTP {
+	public static void main(String[] args) {
+		
+	}
+
+}

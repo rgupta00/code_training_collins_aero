@@ -1,0 +1,53 @@
+package com.day6.threads.c.java5_juc.threadsafe_collection;
+
+import java.util.Iterator;
+import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class MyTSDS extends Thread{
+
+	 static CopyOnWriteArrayList<String> list=new CopyOnWriteArrayList<String>();
+	 
+	 
+	public void run(){
+		try{
+			Thread.sleep(1000);
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
+		
+		list.add("D");
+	}
+	
+	public static void main(String[] args) {
+		//https://www.baeldung.com/java-copy-on-write-arraylist
+		list.add("A");
+		list.add("B");
+		list.add("C");
+		
+		MyTSDS t=new MyTSDS();
+		t.start();
+		
+		Iterator<String> it=list.iterator();
+		
+		while(it.hasNext()){
+			System.out.println("value is :"+ it.next());
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		try {
+			t.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(list);
+	}
+	
+	
+}

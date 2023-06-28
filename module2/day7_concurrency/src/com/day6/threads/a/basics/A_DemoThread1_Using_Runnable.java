@@ -35,7 +35,7 @@ public class A_DemoThread1_Using_Runnable {
 		Thread thread2=new Thread(job,"B");
 		Thread thread3=new Thread(job,"C");
 		
-		thread.yield();
+	//	thread.yield();
 		
 		//thread.setPriority(Thread.MAX_PRIORITY-2);
 		thread.start();
@@ -57,7 +57,7 @@ public class A_DemoThread1_Using_Runnable {
 		}catch(InterruptedException ex){
 			ex.printStackTrace();
 		}
-		
+//		
 		
 		System.out.println("main threads is finished: "+Thread.currentThread().getName());
 	}

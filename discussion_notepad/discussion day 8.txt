@@ -1,0 +1,63 @@
+
+Day 8:
+------
+
+* Quick recap of java threads basics
+* dead lock
+* problem with java threads api
+* introduction to juc
+* threads safe data structure
+* introduction to thread pools
+* difference kind of threads pools cpu vs io bound process
+
+* java 8 steams
+* SOLID
+*GOF desing patterns
+
+
+
+
+Histry of all progress done in field of threads:
+
+1. classical threads 1.4
+	no concept of thread pool
+	Runnable : can return processing result (trick)
+	throwing checked ex is not possible and ex is tricky (trick)
+	No thread safe ds : Vector and Hashtable ( performance issuce)
+	...
+	:(
+	
+	
+2. juc java util concurrent package
+
+3. F and J framework is recursive algo to help to do || processing
+	:(
+	lots of code
+	
+4. java 8 declartive data processing pipeline
+	|| processing in declaritve way
+	
+	
+5. java : virtual thread they are more light wt as compared to classical thread
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

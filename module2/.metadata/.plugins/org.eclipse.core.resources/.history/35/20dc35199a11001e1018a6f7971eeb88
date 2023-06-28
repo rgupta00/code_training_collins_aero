@@ -1,9 +1,0 @@
-package com.day6.session1.threads.revision;
-
-public class DemoThread3 {
-
-	public static void main(String[] args) {
-
-		
-	}
-}

@@ -1,9 +1,0 @@
-package com.day6.session1.threads.revision;
-
-public class C_DemoThread1_Using_AnnInnerClass {
-
-	public static void main(String[] args) {
-
-		
-	}
-}

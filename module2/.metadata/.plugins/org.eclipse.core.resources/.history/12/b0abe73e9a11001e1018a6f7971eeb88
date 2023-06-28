@@ -1,8 +1,0 @@
-package com.day6.session1.threads.revision;
-
-public class B_DemoThread1_Using_Thread {
-
-	public static void main(String[] args) {
-	
-	}
-}

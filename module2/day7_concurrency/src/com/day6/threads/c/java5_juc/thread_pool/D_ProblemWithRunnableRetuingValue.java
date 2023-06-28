@@ -2,6 +2,9 @@ package com.day6.threads.c.java5_juc.thread_pool;
 
 class Cal implements Runnable {
 	private int x, y, sum;
+	
+	private  volatile boolean isDone=false;
+	
 
 	public Cal(int x, int y) {
 		this.x = x;
@@ -16,9 +19,21 @@ class Cal implements Runnable {
 		}
 
 		sum = x + y;
+		isDone=true;
+		synchronized (this) {
+			notifyAll();
+		}
+	
 	}
 
 	public synchronized int getSum() {
+		if(!isDone){
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		return sum;
 	}
 }

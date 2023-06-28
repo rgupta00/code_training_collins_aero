@@ -1,0 +1,44 @@
+package com.day6.threads.c.java5_juc.thread_pool;
+
+import java.time.LocalDateTime;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+class ScheduledProcessJob implements Runnable {
+
+	@Override
+	public void run() {
+		System.out.println("IO bound process...."
+				+ Thread.currentThread().getName()+": "+LocalDateTime.now());
+	}
+
+}
+public class F_ScheduleProcessTP {
+	public static void main(String[] args) {
+		ScheduledExecutorService executorService=Executors.newScheduledThreadPool(16);
+		executorService.schedule(new ScheduledProcessJob(), 4, TimeUnit.SECONDS);
+		executorService.shutdown();
+		
+//		executorService.scheduleWithFixedDelay(new ScheduledProcessJob(), 1, 2, TimeUnit.SECONDS);
+//		executorService.shutdown();
+//		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
