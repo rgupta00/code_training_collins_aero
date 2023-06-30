@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.busycoder.persistance.UserRepo"/>
+<fullyQualifiedTypeName name="com.busycoder.entity.User"/>
+<fullyQualifiedTypeName name="com.demo.Engine"/>
+<fullyQualifiedTypeName name="com.demo.Tyre"/>
+<fullyQualifiedTypeName name="com.demo.V8Engine"/>
+<fullyQualifiedTypeName name="com.demo.TurboEngine"/>
+<fullyQualifiedTypeName name="com.demo.CeatTyre"/>
+<fullyQualifiedTypeName name="com.demo.MrfTyre"/>
+</qualifiedTypeNameHistroy>

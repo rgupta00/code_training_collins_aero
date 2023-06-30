@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
@@ -15,62 +17,27 @@ import java.lang.reflect.Modifier;
 
 public class Main {
 
-	public static void main(String[] args) throws ClassNotFoundException, CloneNotSupportedException, FileNotFoundException, IOException {
+	
+	public static void main(String[] args) throws CloneNotSupportedException, ClassNotFoundException, 
+	InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		
-		//Student student=new Student(1, "raj");//static class loading
-		
-		//dynamic class loading
-		
-		Class<?> clazz=Class.forName("com.dp.creational.a.singleton.Student");
-		
-		Method[]methods=clazz.getDeclaredMethods();
-		
-		for(Method m: methods) {
-			System.out.println(m.getName()+" : "+m.getModifiers()+" : "+Modifier.toString(m.getModifiers()));
-		}
-		
-		
-		
-		
+
 		Singleton singleton=Singleton.getSingleton();
 		System.out.println(singleton.hashCode());
 		
-		//java reflection!
+		//java reflection can break singleton patterns
+		
+		Class<?> clazz=Class.forName("com.dp.creational.a.singleton.Singleton");
+		
+		Constructor[]constructors=clazz.getDeclaredConstructors();
+		constructors[0].setAccessible(true);
+		
+		Singleton singleton2=(Singleton) constructors[0].newInstance();
 		
 		
 		
-		
-//		//ser
-//		ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(new File("demo.txt")));
-//
-//		oos.writeObject(singleton);
-//		
-//		ObjectInputStream ois=new ObjectInputStream(new FileInputStream(new File("demo.txt")));
-//		
-//		Singleton singleton2=(Singleton) ois.readObject();
-//	
-//		System.out.println(singleton2.hashCode());
-		
-		
-//		Class<?> clazz=Class.forName("com.dp.creational.a.singleton.Student");
-//		
-//		Method method[]=clazz.getMethods();
-//		
-//		for(Method m: method) {
-//			System.out.println(m.getName());
-//		}
-		
-		
-//		
-//		Singleton singleton=Singleton.getSingleton();
-//		
 //		Singleton singleton2=(Singleton) singleton.clone();
-//		
-//		System.out.println(singleton.hashCode());
-//		System.out.println(singleton2.hashCode());
-//		
-		
-		
+		System.out.println(singleton2.hashCode());
 		
 	}
 }

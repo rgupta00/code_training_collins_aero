@@ -1,0 +1,7 @@
+package com.busycoder.persistance;
+
+import java.util.List;
+
+public interface UserRepo {
+	public List<T> findByName(String name) ;
+}

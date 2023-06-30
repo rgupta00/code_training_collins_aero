@@ -1,0 +1,5 @@
+package com.busycoder.persistance;
+
+public interface UserRepo {
+
+}

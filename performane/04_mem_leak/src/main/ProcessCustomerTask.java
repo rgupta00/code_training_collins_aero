@@ -17,7 +17,7 @@ private CustomerManager cm;
 		while (true) {		
 
 			Optional<Customer> customer = cm.getNextCustomer();
-			if (customer.isEmpty()) {
+			if ( !customer.isPresent()) {
 				//no customers in queue so pause for half a second
 				try {
 					Thread.sleep((50));

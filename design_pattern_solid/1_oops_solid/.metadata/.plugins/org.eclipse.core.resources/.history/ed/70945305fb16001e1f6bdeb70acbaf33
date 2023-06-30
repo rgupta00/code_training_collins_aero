@@ -1,0 +1,19 @@
+package com.demo;
+//DIP: high level module should not depend on low level module it should depend on abstaction
+//by interface
+public class Car {
+	
+	private Engine engine;
+	private Tyre tyre;
+	
+	public Car() {
+		tyre=new MrfTyre();
+		engine=new V8Engine();
+	}
+	
+	public void drive() {
+		engine.move();
+		tyre.rotate();
+	}
+	
+}

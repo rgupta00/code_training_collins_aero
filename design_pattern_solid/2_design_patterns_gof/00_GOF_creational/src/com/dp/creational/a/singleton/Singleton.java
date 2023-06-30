@@ -1,6 +1,7 @@
 package com.dp.creational.a.singleton;
 
 import java.io.Serializable;
+import java.nio.channels.IllegalSelectorException;
 
 /*
  	" one object per application" ex logging , db connection etc
@@ -14,44 +15,42 @@ import java.io.Serializable;
 	=> best practices, effective java
 	=> using enum
  */
+//Serializable *RMI and socket programming 
+//useful in distrbuted application
+
 final public class Singleton implements Cloneable, Serializable{
-
-	//java 1.4 bad solution
-	//java 1.5 good solution
-	private volatile  static Singleton singleton = null;// lazy vs eager way
-
-	private Singleton() {
-		System.out.println("ctr");
+	//Lazy vs eager initilization
+	
+	private volatile  static Singleton singleton=null;
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return singleton;
 	}
 
-	// t1 t2
-	public static Singleton getSingleton() {
-		if (singleton == null) {
-			synchronized (Singleton.class) {
-				if (singleton == null) {
-					singleton = new Singleton();//atomic
+	private Singleton(){
+		if(singleton!=null){
+			throw new IllegalStateException();
+		}
+	}
+	
+	//visiblity problem of "singleton" variable
+	
+	//this code can still have race condition=> double lock checking concept?
+	//t1 			t2
+	public static Singleton getSingleton(){
+		
+		if(singleton==null){
+			synchronized(Singleton.class){
+				if(singleton==null){
+					singleton=new Singleton();
 				}
 			}
 		}
+		
 		return singleton;
 	}
-
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
-		//throw new CloneNotSupportedException();
-		return singleton;
-	}
-	
-	//call back : u just define this method ..jvm call this before de-ser
-	private Object readResolve() {
-		System.out.println("--------readResolve------------");
-		return singleton;
-	}
-	
 }
-
-//int i=5;
-//long i=5;read in two step
 
 
 
