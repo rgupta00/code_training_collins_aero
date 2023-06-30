@@ -9,9 +9,28 @@ class Collor{
     int size;
 }
 class Dog implements Serializable{
-     Collor collor;
+     transient  Collor collor;
      String dogName;
+     //java is not allowed me to have composite object ie not serilization
+     
+     //i want to interfare bw ser process
+     
+     //callback methods
+     private void writeObject(ObjectOutputStream oos) throws IOException{
+    	 oos.defaultWriteObject();
+    	 oos.writeInt(collor.size);
+     }
+     
+     private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException{
+    	 ois.defaultReadObject();
+    	 collor=new Collor();
+    	 collor.size=ois.readInt();
+     }
 }
+
+
+
+
 public class A_SerAndComposition {
     public static void main(String[] args)throws Exception {
         ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(new File("dataser.ser")));

@@ -1,0 +1,13 @@
+package com.basic.io;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public class B_ReadingAPhoto {
+    public static void main(String[] args) throws Exception{
+       //copy a photo from one file to another using byte streams
+    	///xxxxStream :byte stream
+    	FileInputStream fis=new FileInputStream(new File("/home/raj/Desktop/io_photo/mali.jpg"));
+    }
+}

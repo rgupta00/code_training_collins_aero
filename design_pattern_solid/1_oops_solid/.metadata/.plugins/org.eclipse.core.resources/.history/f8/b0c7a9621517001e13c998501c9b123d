@@ -1,0 +1,15 @@
+package com.basic.ser1;
+
+import java.io.*;
+
+public class B_DeSerilizationHelloWorld {
+    public static void main(String[] args)throws Exception {
+
+      
+    	ObjectInputStream ois=new ObjectInputStream(new FileInputStream(new File("demo.txt")));
+    	Account account=(Account) ois.readObject();
+    	
+       System.out.println(account);
+
+    }
+}

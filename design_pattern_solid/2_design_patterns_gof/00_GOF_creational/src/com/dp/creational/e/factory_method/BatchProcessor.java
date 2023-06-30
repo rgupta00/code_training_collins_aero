@@ -3,11 +3,18 @@ package com.dp.creational.e.factory_method;
 import java.io.File;
 import java.util.List;
 
-public class BatchProcessor {
+//Factory method design pattern: code flexiblity 
 
+abstract public class BatchProcessor {
+
+	
+	public abstract Parser createParser(File file);
+	
 	public void processBatch(String fileName) {
 		File file = openFile();
-		TextParser parser = new TextParser(file);
+//		TextParser parser = new TextParser(file);
+		Parser parser = createParser(file);
+
 		List<Record> records = parser.parse();
 		processorRecords(records);
 		writeSummray();

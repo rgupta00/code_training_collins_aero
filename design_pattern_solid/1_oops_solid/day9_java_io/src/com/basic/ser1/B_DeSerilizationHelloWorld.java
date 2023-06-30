@@ -6,7 +6,11 @@ public class B_DeSerilizationHelloWorld {
     public static void main(String[] args)throws Exception {
 
       
-        System.out.println("--------------------");
+    	ObjectInputStream ois=new ObjectInputStream(new FileInputStream(new File("demo.txt")));
+    	Account account=(Account) ois.readObject();
+    	
+       System.out.println(account);
+       System.out.println(account.bankName);
 
     }
 }

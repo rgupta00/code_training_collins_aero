@@ -2,10 +2,27 @@ package com.dp.creational.b.clonning;
 
 import java.util.Date;
 
-class Employee  implements Cloneable{
+class Employee implements Cloneable{
 	private Integer id;
 	private String name;
 	private Date hireDay;//mutable
+
+	
+	
+	
+//	//Shallow copy vs deep copy
+//	@Override
+//	protected Object clone() throws CloneNotSupportedException {
+//		return super.clone();
+//	}
+	
+	//Shallow copy vs deep copy
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		Employee e= (Employee) super.clone();
+		e.hireDay=(Date)hireDay.clone();// java o u want to do deep copy
+		return e;
+	}
 
 	public Employee(Integer id, String name, Date date) {
 		super();
