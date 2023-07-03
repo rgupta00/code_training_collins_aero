@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<people>
+		<husband>
+			<name>raja</name>
+			<age>33</age>
+			<employed >yes</employed>
+		</husband>
+	
+		<husband employed="no">
+			<name>amit</name>
+			<age>23</age>
+		<employeed >yes</employeed>
+		</husband>
+		<wife>
+			<name>foo</name>
+			<age>30</age>
+		</wife>
+	
+		<wife>
+			<name>bar</name>
+			<age>22</age>
+		</wife>
+	</people>
+

@@ -1,0 +1,200 @@
+Day 10:
+----------
+Good morning all
+
+let we wait for other for 2 min before start :)
+
+
+Quick recap of serilization
+
+Netowork programming using java
+
+RMI distributed programming with java
+
+JVM internals discussion
+
+XML and related technologies
+
+
+What is serilization?
+process to get the state of object along with meta data and send it over the network so that it can be recoved back
+
+
+
+serilization is used during RMI
+
+RMI : remote method invocation
+
+
+Socket programming : network programming in java
+
+process ID
+thread ID
+
+
+Socket is logical concept that contain IP address + port No, and it is a endpoint of communication
+
+
+
+App1						App2
+
+
+2 kind of sockets:
+----------------------------
+1. serverSocket: listen the communtcation , server side
+
+2. Socket: client side
+
+
+how to create a threaded chat application:
+--------------------------------
+
+step 1:
+
+
+public class ServerDemo {
+	
+	public static void main(String[] args) throws IOException {
+		
+		ServerSocket ss=new ServerSocket(8323);
+		
+		//How to run server continously even if some client say bye?
+		
+		// we can write a infinite loop that keep running for ever
+		
+		while(true){
+			Socket socket=ss.accept();//blocking method till the req from client is not coming it is blcoked
+			System.out.println("comm is accepted...");
+			ServerThread thread=  new ServerThread(socket);
+			thread.start();
+		
+		}
+		
+		
+		
+	}
+
+}
+
+
+
+Step 2:
+
+public class ServerThread extends Thread{
+	
+	private Socket socket;
+
+	public ServerThread(Socket socket) {
+		this.socket = socket;
+	}
+	
+	
+	public void run(){
+		try{
+
+			InputStream is=socket.getInputStream();
+			
+			BufferedReader brClient=new BufferedReader(new InputStreamReader(is));
+			
+			String messageFromClient= brClient.readLine();
+			
+			while(!messageFromClient.equalsIgnoreCase("bye")){
+				System.out.println(messageFromClient);
+				messageFromClient=brClient.readLine();
+			}
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+}
+
+
+Step 3: client demo
+
+public class ClientDemo {
+	
+	public static void main(String[] args) throws UnknownHostException, IOException {
+		Socket socket=new Socket(InetAddress.getLocalHost(), 8323);
+		//we need to write the the steram so that data can be read from the server
+		
+		OutputStream os=socket.getOutputStream();
+		PrintWriter pw=new PrintWriter(os, true);
+		
+		pw.println("hello server");
+		pw.println("hello again");
+		pw.println("bye");
+		pw.close();
+		
+		
+	}
+
+}
+
+
+RMI (Remote method invocation )? 
+Socket programming + Serlization
+
+
+Distributed application
+
+
+
+
+
+XML and related technologies quick introduction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

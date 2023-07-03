@@ -1,0 +1,14 @@
+package com.dom.ex2;
+
+import javax.xml.bind.JAXBContext;
+
+public class DemoJAXB {
+	
+	public static void main(String[] args) {
+		ZooInfo zoo=new ZooInfo("banargatta", 201);
+		
+		JAXBContext context=JAXBContext.newInstance(ZooInfo.class);
+	
+	}
+
+}

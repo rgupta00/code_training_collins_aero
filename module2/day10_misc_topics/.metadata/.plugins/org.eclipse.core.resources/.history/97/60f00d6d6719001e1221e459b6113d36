@@ -1,0 +1,21 @@
+package com.dom.ex2;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+
+public class DemoJAXB {
+	
+	public static void main(String[] args) throws Exception {
+		ZooInfo zoo=new ZooInfo("banargatta", 201);
+		
+		JAXBContext context=JAXBContext.newInstance(ZooInfo.class);
+		
+		Marshaller marshaller=context.createMarshaller();
+		
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		marshaller.marshal(zoo, System.out);
+	
+	}
+
+}

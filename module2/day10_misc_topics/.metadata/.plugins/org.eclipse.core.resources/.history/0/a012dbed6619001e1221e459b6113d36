@@ -1,0 +1,39 @@
+package com.dom.ex2;
+
+public class ZooInfo {
+	
+	private String zooName;
+	
+	private int zooId;
+
+	public String getZooName() {
+		return zooName;
+	}
+
+	public void setZooName(String zooName) {
+		this.zooName = zooName;
+	}
+
+	public int getZooId() {
+		return zooId;
+	}
+
+	public void setZooId(int zooId) {
+		this.zooId = zooId;
+	}
+
+	@Override
+	public String toString() {
+		return "ZooInfo [zooName=" + zooName + ", zooId=" + zooId + "]";
+	}
+
+	public ZooInfo(String zooName, int zooId) {
+		super();
+		this.zooName = zooName;
+		this.zooId = zooId;
+	}
+
+	public ZooInfo() {}
+	
+	
+}

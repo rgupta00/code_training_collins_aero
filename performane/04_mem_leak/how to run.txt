@@ -1,4 +1,4 @@
--Xmx20m -verbose:gc
+-Xmx50m -verbose:gc
 
 
 
