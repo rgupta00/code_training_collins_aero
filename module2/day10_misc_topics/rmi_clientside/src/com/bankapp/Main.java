@@ -1,0 +1,19 @@
+package com.bankapp;
+
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class Main {
+	
+	public static void main(String[] args) throws RemoteException, NotBoundException {
+		Registry registry=LocateRegistry.getRegistry("localhost", 5400);
+		
+		AtmCard atmCard=(AtmCard) registry.lookup("obj");
+		
+		System.out.println(atmCard.isValid("1233"));
+		
+	}
+
+}

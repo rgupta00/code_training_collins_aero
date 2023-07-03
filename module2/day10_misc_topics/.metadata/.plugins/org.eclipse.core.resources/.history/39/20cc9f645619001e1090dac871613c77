@@ -1,0 +1,15 @@
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+
+public class ClientDemo {
+	
+	public static void main(String[] args) throws UnknownHostException, IOException {
+		Socket socket=new Socket(InetAddress.getLocalHost(), 8323);
+		System.out.println("connect to server...");
+		
+	}
+
+}

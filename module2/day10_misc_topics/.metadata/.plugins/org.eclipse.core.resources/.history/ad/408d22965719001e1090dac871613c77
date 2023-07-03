@@ -1,0 +1,26 @@
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+
+public class ClientDemo {
+	
+	public static void main(String[] args) throws UnknownHostException, IOException {
+		Socket socket=new Socket(InetAddress.getLocalHost(), 8323);
+		//we need to write the the steram so that data can be read from the server
+		
+		OutputStream os=socket.getOutputStream();
+		PrintWriter pw=new PrintWriter(os, true);
+		
+		pw.println("hello server");
+		pw.println("hello again");
+		//pw.println("bye");
+		//pw.close();
+		
+		
+	}
+
+}

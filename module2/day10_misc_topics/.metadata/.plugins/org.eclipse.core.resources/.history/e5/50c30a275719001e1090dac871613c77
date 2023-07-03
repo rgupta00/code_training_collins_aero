@@ -1,0 +1,34 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+
+public class ServerDemo {
+	
+	public static void main(String[] args) throws IOException {
+		
+		ServerSocket ss=new ServerSocket(8323);
+		
+		Socket socket=ss.accept();//blocking method till the req from client is not coming it is blcoked
+		System.out.println("comm is accepted...");
+		
+		InputStream is=socket.getInputStream();
+		
+		BufferedReader brClient=new BufferedReader(new InputStreamReader(is));
+		
+		String messageFromClient= brClient.readLine();
+		
+		while(!messageFromClient.equalsIgnoreCase("bye")){
+			System.out.println( "client says"+ messageFromClient);
+			messageFromClient=brClient.readLine();
+		}
+	
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,22 @@
+package com.bankapp;
+
+import java.io.Serializable;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+//Whenever u want to create server side of RMI u need to extends a class ie called UnicastRemoteObject
+public class AtmCardImpl extends UnicastRemoteObject  implements AtmCard, Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	protected AtmCardImpl(int port) throws RemoteException {
+		super(port);
+	}
+
+	//logic u can do with database
+	@Override
+	public boolean isValid(String card) throws RemoteException {
+		Integer value=Integer.parseInt(card);
+		
+		return value%2==0;
+	}
+
+}

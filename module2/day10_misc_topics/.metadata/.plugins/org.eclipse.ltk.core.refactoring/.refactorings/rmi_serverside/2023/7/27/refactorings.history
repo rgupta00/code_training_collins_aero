@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;AtmCard.java&apos; to &apos;rmi_clientside/src/com.bankapp&apos;&#x0A;- Original project: &apos;rmi_serverside&apos;&#x0A;- Destination element: &apos;rmi_clientside/src/com.bankapp&apos;&#x0A;- Original element: &apos;com.bankapp.AtmCard.java&apos;" description="Copy compilation unit" destination="=rmi_clientside/src&lt;com.bankapp" element1="/src&lt;com.bankapp{AtmCard.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1688359072608" units="1" version="1.0"/>
+</session>
